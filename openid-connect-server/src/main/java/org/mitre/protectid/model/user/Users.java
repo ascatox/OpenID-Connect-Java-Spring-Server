@@ -1,5 +1,7 @@
 package org.mitre.protectid.model.user;
 
+import org.mitre.protectid.model.authority.Authorities;
+
 import javax.persistence.*;
 
 /**
@@ -7,8 +9,14 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="users")
+@NamedQueries({
+	@NamedQuery(name = Users.QUERY_ALL, query = "select u from Users u"),
+	@NamedQuery(name = Users.QUERY_BY_USERNAME, query = "select u from Users u where u.username = :" + Authorities.PARAM_USERNAME),
+})
 public class Users {
 
+	public static final String QUERY_ALL = "";
+	public static final String QUERY_BY_USERNAME = "";
 	protected String username;
 	protected String password;
 	protected boolean enabled;

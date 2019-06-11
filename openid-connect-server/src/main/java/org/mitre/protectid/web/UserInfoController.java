@@ -3,7 +3,7 @@ package org.mitre.protectid.web;
 import org.mitre.openid.connect.model.DefaultUserInfo;
 import org.mitre.openid.connect.model.UserInfo;
 import org.mitre.protectid.service.IdentityGenerator;
-import org.mitre.protectid.service.JpaUserService;
+import org.mitre.protectid.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +27,7 @@ import java.security.NoSuchProviderException;
 @Controller
 public class UserInfoController {
 	@Autowired
-	JpaUserService service;
+	UserService service;
 	IdentityGenerator identityGenerator;
 
 	private final String PASSWORD = "password"; //TODO

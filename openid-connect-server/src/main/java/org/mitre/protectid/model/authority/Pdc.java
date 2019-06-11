@@ -1,15 +1,12 @@
 package org.mitre.protectid.model.authority;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author ascatox
  */
 @Entity
-@Table(name="pdc")
+@Table(name = "pdc")
 public class Pdc {
 	String id;
 	String ppa;
@@ -36,6 +33,8 @@ public class Pdc {
 		this.id = id;
 	}
 
+	@Basic
+	@Column(name = "ppa")
 	public String getPpa() {
 		return ppa;
 	}
@@ -44,6 +43,8 @@ public class Pdc {
 		this.ppa = ppa;
 	}
 
+	@Basic
+	@Column(name = "dps")
 	public String getDps() {
 		return dps;
 	}
@@ -52,6 +53,8 @@ public class Pdc {
 		this.dps = dps;
 	}
 
+	@Basic
+	@Column(name = "dpr")
 	public String getDpr() {
 		return dpr;
 	}

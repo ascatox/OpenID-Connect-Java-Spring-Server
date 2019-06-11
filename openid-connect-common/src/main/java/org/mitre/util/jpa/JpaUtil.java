@@ -65,4 +65,9 @@ public class JpaUtil {
 		entityManager.flush();
 		return tmp;
 	}
+
+	public static void delete(EntityManager entityManager, Object entity) {
+		entityManager.remove(entity);
+		entityManager.flush();
+	}
 }

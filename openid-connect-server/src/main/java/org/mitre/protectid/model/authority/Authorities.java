@@ -1,16 +1,20 @@
 package org.mitre.protectid.model.authority;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author ascatox
  */
 @Entity
 @Table(name="authorities")
+@NamedQueries({
+	@NamedQuery(name = Authorities.QUERY_ALL, query = "select a from Authorities a"),
+	@NamedQuery(name = Authorities.QUERY_BY_USERNAME, query = "select a from Authorities a where a.id = :" + Authorities.PARAM_USERNAME),
+})
 public class Authorities {
+	public static final String PARAM_USERNAME = "username";
+	public static final String QUERY_ALL = "Users.queryAll";
+	public static final String QUERY_BY_USERNAME = "Users.queryByUsername";
 	protected String username;
 	protected String authority;
 
@@ -32,10 +36,14 @@ public class Authorities {
 		return username;
 	}
 
+	@Basic
+	@Column(name = "username")
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
+	@Basic
+	@Column(name = "authority")
 	public String getAuthority() {
 		return authority;
 	}

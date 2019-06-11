@@ -45,14 +45,14 @@ import com.google.gson.JsonParser;
 @NamedQueries({
 	@NamedQuery(name=DefaultUserInfo.QUERY_BY_USERNAME, query = "select u from DefaultUserInfo u WHERE u.preferredUsername = :" + DefaultUserInfo.PARAM_USERNAME),
 	@NamedQuery(name=DefaultUserInfo.QUERY_BY_EMAIL, query = "select u from DefaultUserInfo u WHERE u.email = :" + DefaultUserInfo.PARAM_EMAIL),
-	@NamedQuery(name=DefaultUserInfo.QUERY_BY_SID, query = "select u from DefaultUserInfo u WHERE u.sub = :" + DefaultUserInfo.PARAM_SUB)
+	@NamedQuery(name=DefaultUserInfo.QUERY_BY_PID, query = "select u from DefaultUserInfo u WHERE u.sub = :" + DefaultUserInfo.PARAM_SUB)
 
 })
 public class DefaultUserInfo implements UserInfo {
 
 	public static final String QUERY_BY_USERNAME = "DefaultUserInfo.getByUsername";
 	public static final String QUERY_BY_EMAIL = "DefaultUserInfo.getByEmailAddress";
-	public static final String QUERY_BY_SID = "DefaultUserInfo.getBySid";
+	public static final String QUERY_BY_PID = "DefaultUserInfo.getByPid";
 
 
 	public static final String PARAM_USERNAME = "username";

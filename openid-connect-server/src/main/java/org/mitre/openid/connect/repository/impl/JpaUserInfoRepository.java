@@ -66,12 +66,12 @@ public class JpaUserInfoRepository implements UserInfoRepository {
 	}
 
 	/**
-	 * Get a single UserInfo object by its sid address
+	 * Get a single UserInfo object by its pid address
 	 */
 	@Override
-	public UserInfo getBySID(String sid) {
+	public UserInfo getByPid(String pid) {
 		TypedQuery<DefaultUserInfo> query = manager.createNamedQuery(DefaultUserInfo.QUERY_BY_SID, DefaultUserInfo.class);
-		query.setParameter(DefaultUserInfo.PARAM_SUB, sid);
+		query.setParameter(DefaultUserInfo.PARAM_SUB, pid);
 
 		return getSingleResult(query.getResultList());
 	}
@@ -86,6 +86,16 @@ public class JpaUserInfoRepository implements UserInfoRepository {
 			manager.clear();
 		}
 		return userInfoRet;
+	}
+
+	@Override
+	@Transactional
+	public void removeUser(UserInfo userInfo) throws Exception {
+		if (null != userInfo && null != userInfo.getEmail() && !StringUtils.isEmpty(userInfo.getEmail())) {
+			manager.remove(userInfo);
+			manager.flush();
+			manager.clear();
+		}
 	}
 
 }

@@ -1,20 +1,30 @@
 package org.mitre.protectid.model.authority;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author ascatox
  */
 @Entity
 @Table(name="sid")
-public class Sid {
+@NamedQueries({
+	@NamedQuery(name = Sid.QUERY_ALL, query = "select s from Sid s"),
+	@NamedQuery(name = Sid.QUERY_BY_ID, query = "select s from Sid s where s.id = :" + Sid.PARAM_ID),
+	@NamedQuery(name = Sid.QUERY_BY_DP, query = "select s from Sid s where s.dp = :" + Sid.PARAM_DP),
 
+
+})
+public class Sid {
+	public static final String QUERY_BY_DP = "Sid.queryByDp";
+	public static final String QUERY_BY_ID = "Sid.queryById";
+	public static final String QUERY_ALL = "Sid.queryAll";
 	public static final Integer CERT_LEVEL_LOW = 0;
+	public static final String PARAM_ID = "id";
+	public static final String PARAM_DP = "dp";
+
 	public static final Integer CERT_LEVEL_AVG = 1;
 	public static final Integer CERT_LEVEL_HIGH = 2;
+
 
 	protected String id;
 	protected String pip;
@@ -28,6 +38,7 @@ public class Sid {
 		this.pip = pip;
 		this.crtLevel = CERT_LEVEL_LOW;
 	}
+
 	@Id
 	@Column(name = "id")
 	public String getId() {
@@ -37,7 +48,8 @@ public class Sid {
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	@Basic
+	@Column(name = "pip")
 	public String getPip() {
 		return pip;
 	}
@@ -45,7 +57,8 @@ public class Sid {
 	public void setPip(String pip) {
 		this.pip = pip;
 	}
-
+	@Basic
+	@Column(name = "crtLevel")
 	public Integer getCrtLevel() {
 		return crtLevel;
 	}

@@ -1,7 +1,5 @@
 package org.mitre.protectid.model.policy;
 
-import org.mitre.uma.model.ResourceSet;
-
 import javax.persistence.*;
 
 /**
@@ -10,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="ppa")
 @NamedQueries({
-	@NamedQuery(name = ResourceSet.QUERY_ALL, query = "select p from Ppa p")
+	@NamedQuery(name = Ppa.QUERY_ALL, query = "select p from Ppa p")
 })
 public class Ppa {
 
@@ -38,7 +36,8 @@ public class Ppa {
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	@Basic
+	@Column(name = "ppm")
 	public String getPpm() {
 		return ppm;
 	}
@@ -46,7 +45,8 @@ public class Ppa {
 	public void setPpm(String ppm) {
 		this.ppm = ppm;
 	}
-
+	@Basic
+	@Column(name = "pip")
 	public String getPip() {
 		return pip;
 	}
@@ -54,7 +54,8 @@ public class Ppa {
 	public void setPip(String pip) {
 		this.pip = pip;
 	}
-
+	@Basic
+	@Column(name = "opt")
 	public String getOpt() {
 		return opt;
 	}

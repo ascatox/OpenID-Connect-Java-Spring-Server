@@ -1,9 +1,6 @@
 package org.mitre.protectid.model.policy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author ascatox
@@ -32,7 +29,8 @@ public class Ppm {
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	@Basic
+	@Column(name = "dp")
 	public String getDp() {
 		return dp;
 	}
@@ -40,7 +38,8 @@ public class Ppm {
 	public void setDp(String dp) {
 		this.dp = dp;
 	}
-
+	@Basic
+	@Column(name = "mod")
 	public String getMod() {
 		return mod;
 	}

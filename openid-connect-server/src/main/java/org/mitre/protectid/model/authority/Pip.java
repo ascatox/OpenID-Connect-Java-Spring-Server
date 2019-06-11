@@ -1,9 +1,6 @@
 package org.mitre.protectid.model.authority;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author ascatox
@@ -38,7 +35,8 @@ public class Pip {
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	@Basic
+	@Column(name = "pk")
 	public String getPk() {
 		return pk;
 	}
@@ -46,7 +44,8 @@ public class Pip {
 	public void setPk(String pk) {
 		this.pk = pk;
 	}
-
+	@Basic
+	@Column(name = "sidAuth")
 	public String getSidAuth() {
 		return sidAuth;
 	}
@@ -54,7 +53,8 @@ public class Pip {
 	public void setSidAuth(String sidAuth) {
 		this.sidAuth = sidAuth;
 	}
-
+	@Basic
+	@Column(name = "sidCert")
 	public String getSidCert() {
 		return sidCert;
 	}
@@ -63,6 +63,8 @@ public class Pip {
 		this.sidCert = sidCert;
 	}
 
+	@Basic
+	@Column(name = "ppaSubs")
 	public String getPpaSubs() {
 		return ppaSubs;
 	}
@@ -70,7 +72,8 @@ public class Pip {
 	public void setPpaSubs(String ppaSubs) {
 		this.ppaSubs = ppaSubs;
 	}
-
+	@Basic
+	@Column(name = "ppaEmit")
 	public String getPpaEmit() {
 		return ppaEmit;
 	}

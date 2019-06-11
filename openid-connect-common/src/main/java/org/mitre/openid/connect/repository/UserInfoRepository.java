@@ -51,7 +51,7 @@ public interface UserInfoRepository {
 	 * @param sid
 	 * @return
 	 */
-	public UserInfo getBySID(String sid);
+	public UserInfo getByPid(String sid);
 
 	/**
 	 * Create a new User in the database
@@ -61,4 +61,6 @@ public interface UserInfoRepository {
 
 	public UserInfo createUser(UserInfo userInfo) throws Exception;
 
+	@Transactional
+	void removeUser(UserInfo userInfo) throws Exception;
 }
