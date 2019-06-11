@@ -1,4 +1,4 @@
-package org.mitre.protectid.model.authority;
+package it.protectid.model.authority;
 
 import javax.persistence.*;
 
@@ -6,8 +6,12 @@ import javax.persistence.*;
  * @author ascatox
  */
 @Entity
-@Table(name="ppa")
+@Table(name="pip")
+@NamedQueries({
+	@NamedQuery(name = Pip.QUERY_ALL, query = "select p from Pip p")
+})
 public class Pip {
+	public static final String QUERY_ALL = "Pip.queryAll";
 	String id;
 	String pk;
 	String sidAuth;

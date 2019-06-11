@@ -1,8 +1,6 @@
-package org.mitre.protectid.repository;
+package it.protectid.repository;
 
-import org.mitre.protectid.model.authority.Authorities;
-import org.mitre.protectid.model.authority.Sid;
-import org.mitre.uma.model.ResourceSet;
+import it.protectid.model.authority.Authorities;
 import org.mitre.util.jpa.JpaUtil;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

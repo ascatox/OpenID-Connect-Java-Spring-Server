@@ -1,6 +1,6 @@
-package org.mitre.protectid.repository;
+package it.protectid.repository;
 
-import org.mitre.protectid.model.policy.Ppa;
+import it.protectid.model.policy.Ppa;
 import org.mitre.util.jpa.JpaUtil;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

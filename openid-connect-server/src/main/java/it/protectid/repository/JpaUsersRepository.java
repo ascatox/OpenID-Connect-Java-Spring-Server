@@ -1,8 +1,8 @@
-package org.mitre.protectid.repository;
+package it.protectid.repository;
 
+import it.protectid.model.authority.Authorities;
+import it.protectid.model.user.Users;
 import org.mitre.openid.connect.model.UserInfo;
-import org.mitre.protectid.model.authority.Authorities;
-import org.mitre.protectid.model.user.Users;
 import org.mitre.util.jpa.JpaUtil;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

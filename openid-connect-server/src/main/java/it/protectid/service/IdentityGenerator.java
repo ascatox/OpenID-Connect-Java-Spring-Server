@@ -1,8 +1,8 @@
-package org.mitre.protectid.service;
+package it.protectid.service;
 
-import org.mitre.protectid.crypto.AsymmetricCryptography;
-import org.mitre.protectid.crypto.GenerateKeys;
-import org.mitre.protectid.model.authority.Sid;
+import it.protectid.crypto.AsymmetricCryptography;
+import it.protectid.crypto.GenerateKeys;
+import it.protectid.model.authority.Sid;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.BadPaddingException;

@@ -1,11 +1,9 @@
-package org.mitre.protectid.model.user;
-
-import org.mitre.openid.connect.model.DefaultUserInfo;
+package it.protectid.model.user;
 
 /**
  * @author ascatox
  */
-public class ProtectIDUserInfo extends org.mitre.openid.connect.model.DefaultUserInfo {
+public class ProtectIdUserInfo extends org.mitre.openid.connect.model.DefaultUserInfo {
 	protected String postalCode;
 	protected String street;
 

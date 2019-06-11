@@ -1,4 +1,4 @@
-package org.mitre.protectid.crypto;
+package it.protectid.crypto;
 
 import java.io.File;
 import java.io.FileInputStream;

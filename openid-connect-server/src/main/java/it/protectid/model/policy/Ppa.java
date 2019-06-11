@@ -1,4 +1,4 @@
-package org.mitre.protectid.model.policy;
+package it.protectid.model.policy;
 
 import javax.persistence.*;
 

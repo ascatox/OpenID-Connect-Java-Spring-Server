@@ -1,6 +1,6 @@
-package org.mitre.protectid.model.user;
+package it.protectid.model.user;
 
-import org.mitre.protectid.model.authority.Authorities;
+import it.protectid.model.authority.Authorities;
 
 import javax.persistence.*;
 

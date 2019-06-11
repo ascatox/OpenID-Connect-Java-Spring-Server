@@ -1,11 +1,11 @@
-package org.mitre.protectid.service;
+package it.protectid.service;
 
 import org.mitre.openid.connect.model.UserInfo;
-import org.mitre.protectid.model.authority.Authorities;
-import org.mitre.protectid.model.user.Users;
-import org.mitre.protectid.repository.JpaAuthoritiesRepository;
+import it.protectid.model.authority.Authorities;
+import it.protectid.model.user.Users;
+import it.protectid.repository.JpaAuthoritiesRepository;
 import org.mitre.openid.connect.repository.impl.JpaUserInfoRepository;
-import org.mitre.protectid.repository.JpaUsersRepository;
+import it.protectid.repository.JpaUsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

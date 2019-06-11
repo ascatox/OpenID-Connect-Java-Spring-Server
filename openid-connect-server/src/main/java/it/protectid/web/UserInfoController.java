@@ -1,9 +1,9 @@
-package org.mitre.protectid.web;
+package it.protectid.web;
 
+import it.protectid.service.IdentityGenerator;
+import it.protectid.service.UserService;
 import org.mitre.openid.connect.model.DefaultUserInfo;
 import org.mitre.openid.connect.model.UserInfo;
-import org.mitre.protectid.service.IdentityGenerator;
-import org.mitre.protectid.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +27,7 @@ import java.security.NoSuchProviderException;
 @Controller
 public class UserInfoController {
 	@Autowired
-	UserService service;
+	UserService userService;
 	IdentityGenerator identityGenerator;
 
 	private final String PASSWORD = "password"; //TODO
@@ -49,7 +49,7 @@ public class UserInfoController {
 		user.setSub(sid);
 		user.setPreferredUsername(user.getEmail());
 		try {
-			final UserInfo userInfo = service.createUser(user, PASSWORD);
+			final UserInfo userInfo = userService.createUser(user, PASSWORD);
 			return "Users with email " + userInfo.getEmail() + " and SID " + userInfo.getSub() + " created correctly";
 		} catch (Exception e) {
 			return "Error encountered: " + e.getMessage();

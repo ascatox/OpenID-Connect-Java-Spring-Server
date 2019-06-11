@@ -1,4 +1,4 @@
-package org.mitre.protectid.model.authority;
+package it.protectid.model.authority;
 
 import javax.persistence.*;
 
