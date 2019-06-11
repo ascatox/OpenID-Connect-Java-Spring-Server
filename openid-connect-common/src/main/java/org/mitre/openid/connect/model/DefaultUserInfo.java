@@ -44,20 +44,26 @@ import com.google.gson.JsonParser;
 @Table(name="user_info")
 @NamedQueries({
 	@NamedQuery(name=DefaultUserInfo.QUERY_BY_USERNAME, query = "select u from DefaultUserInfo u WHERE u.preferredUsername = :" + DefaultUserInfo.PARAM_USERNAME),
-	@NamedQuery(name=DefaultUserInfo.QUERY_BY_EMAIL, query = "select u from DefaultUserInfo u WHERE u.email = :" + DefaultUserInfo.PARAM_EMAIL)
+	@NamedQuery(name=DefaultUserInfo.QUERY_BY_EMAIL, query = "select u from DefaultUserInfo u WHERE u.email = :" + DefaultUserInfo.PARAM_EMAIL),
+	@NamedQuery(name=DefaultUserInfo.QUERY_BY_SID, query = "select u from DefaultUserInfo u WHERE u.sub = :" + DefaultUserInfo.PARAM_SUB)
+
 })
 public class DefaultUserInfo implements UserInfo {
 
 	public static final String QUERY_BY_USERNAME = "DefaultUserInfo.getByUsername";
 	public static final String QUERY_BY_EMAIL = "DefaultUserInfo.getByEmailAddress";
+	public static final String QUERY_BY_SID = "DefaultUserInfo.getBySid";
+
 
 	public static final String PARAM_USERNAME = "username";
 	public static final String PARAM_EMAIL = "email";
+	public static final String PARAM_SUB = "sub";
+
 
 	private static final long serialVersionUID = 6078310513185681918L;
 
 	private Long id;
-	private String sub;
+	private String sid;
 	private String preferredUsername;
 	private String name;
 	private String givenName;
@@ -102,14 +108,14 @@ public class DefaultUserInfo implements UserInfo {
 	@Basic
 	@Column(name="sub")
 	public String getSub() {
-		return sub;
+		return sid;
 	}
 	/* (non-Javadoc)
 	 * @see org.mitre.openid.connect.model.UserInfo#setUserId(java.lang.String)
 	 */
 	@Override
-	public void setSub(String sub) {
-		this.sub = sub;
+	public void setSub(String sid) {
+		this.sid = sid;
 	}
 	/* (non-Javadoc)
 	 * @see org.mitre.openid.connect.model.UserInfo#getPreferredUsername
@@ -566,7 +572,7 @@ public class DefaultUserInfo implements UserInfo {
 		result = prime * result + ((picture == null) ? 0 : picture.hashCode());
 		result = prime * result + ((preferredUsername == null) ? 0 : preferredUsername.hashCode());
 		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
-		result = prime * result + ((sub == null) ? 0 : sub.hashCode());
+		result = prime * result + ((sid == null) ? 0 : sid.hashCode());
 		result = prime * result + ((updatedTime == null) ? 0 : updatedTime.hashCode());
 		result = prime * result + ((website == null) ? 0 : website.hashCode());
 		result = prime * result + ((zoneinfo == null) ? 0 : zoneinfo.hashCode());
@@ -707,11 +713,11 @@ public class DefaultUserInfo implements UserInfo {
 		} else if (!profile.equals(other.profile)) {
 			return false;
 		}
-		if (sub == null) {
-			if (other.sub != null) {
+		if (sid == null) {
+			if (other.sid != null) {
 				return false;
 			}
-		} else if (!sub.equals(other.sub)) {
+		} else if (!sid.equals(other.sid)) {
 			return false;
 		}
 		if (updatedTime == null) {

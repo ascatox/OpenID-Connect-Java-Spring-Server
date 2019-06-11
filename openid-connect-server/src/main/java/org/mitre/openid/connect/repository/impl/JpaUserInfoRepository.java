@@ -27,17 +27,19 @@ import org.mitre.openid.connect.model.DefaultUserInfo;
 import org.mitre.openid.connect.model.UserInfo;
 import org.mitre.openid.connect.repository.UserInfoRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 /**
  * JPA UserInfo repository implementation
  *
  * @author Michael Joseph Walsh
- *
  */
 @Repository("jpaUserInfoRepository")
+@Transactional(readOnly = true)
 public class JpaUserInfoRepository implements UserInfoRepository {
 
-	@PersistenceContext(unitName="defaultPersistenceUnit")
+	@PersistenceContext(unitName = "defaultPersistenceUnit")
 	private EntityManager manager;
 
 	/**
@@ -61,6 +63,29 @@ public class JpaUserInfoRepository implements UserInfoRepository {
 		query.setParameter(DefaultUserInfo.PARAM_EMAIL, email);
 
 		return getSingleResult(query.getResultList());
+	}
+
+	/**
+	 * Get a single UserInfo object by its sid address
+	 */
+	@Override
+	public UserInfo getBySID(String sid) {
+		TypedQuery<DefaultUserInfo> query = manager.createNamedQuery(DefaultUserInfo.QUERY_BY_SID, DefaultUserInfo.class);
+		query.setParameter(DefaultUserInfo.PARAM_SUB, sid);
+
+		return getSingleResult(query.getResultList());
+	}
+
+	@Override
+	@Transactional
+	public UserInfo createUser(UserInfo userInfo) throws Exception {
+		UserInfo userInfoRet = null;
+		if (null != userInfo && null != userInfo.getEmail() && !StringUtils.isEmpty(userInfo.getEmail())) {
+			userInfoRet = manager.merge(userInfo);
+			manager.flush();
+			manager.clear();
+		}
+		return userInfoRet;
 	}
 
 }

@@ -90,6 +90,7 @@ public class UserInfoInterceptor extends HandlerInterceptorAdapter {
 				if (auth != null && auth.getName() != null && userInfoService != null) {
 
 					// try to look up a user based on the principal's name
+
 					UserInfo user = userInfoService.getByUsername(auth.getName());
 
 					// if we have one, inject it so views can use it

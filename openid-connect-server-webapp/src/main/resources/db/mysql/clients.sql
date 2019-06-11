@@ -59,3 +59,7 @@ COMMIT;
 
 SET AUTOCOMMIT = 1;
 
+ALTER TABLE client_details
+ADD COLUMN `pk` BLOB NULL AFTER `code_challenge_method`,
+ADD COLUMN `sid_auth_not` VARCHAR(256) NULL AFTER `pk`,
+ADD COLUMN `ppa_subs_not` VARCHAR(256) NULL AFTER `sid_auth_not`;

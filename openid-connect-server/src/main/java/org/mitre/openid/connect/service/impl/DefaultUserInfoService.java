@@ -67,7 +67,6 @@ public class DefaultUserInfoService implements UserInfoService {
 		}
 
 		return userInfo;
-
 	}
 
 	@Override

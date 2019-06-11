@@ -43,4 +43,22 @@ public interface UserInfoRepository {
 	 */
 	public UserInfo getByEmailAddress(String email);
 
+
+	/**
+	 *
+	 * Get the UserInfo object by its sid field
+	 *
+	 * @param sid
+	 * @return
+	 */
+	public UserInfo getBySID(String sid);
+
+	/**
+	 * Create a new User in the database
+	 * @param userInfo
+	 * @throws Exception
+	 */
+
+	public UserInfo createUser(UserInfo userInfo) throws Exception;
+
 }

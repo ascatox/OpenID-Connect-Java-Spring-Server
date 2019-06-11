@@ -44,6 +44,9 @@
 				<entry key="eclipselink.logging.level" value="INFO" />
 				<entry key="eclipselink.logging.level.sql" value="INFO" />
 				<entry key="eclipselink.cache.shared.default" value="false" />
+				<entry key="eclipselink.cache.size.default" value="0" />
+				<entry key="eclipselink.cache.type.default" value="None" />
+				<entry key="eclipselink.persistence-context.flush-mode" value="AUTO" />
 			</map>
 		</property>
 		<property name="persistenceUnitName" value="defaultPersistenceUnit" />
