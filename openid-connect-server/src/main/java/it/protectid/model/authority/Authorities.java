@@ -9,12 +9,13 @@ import javax.persistence.*;
 @Table(name="authorities")
 @NamedQueries({
 	@NamedQuery(name = Authorities.QUERY_ALL, query = "select a from Authorities a"),
-	@NamedQuery(name = Authorities.QUERY_BY_USERNAME, query = "select a from Authorities a where a.id = :" + Authorities.PARAM_USERNAME),
+	@NamedQuery(name = Authorities.QUERY_BY_USERNAME, query = "select a from Authorities a where a.username = :" + Authorities.PARAM_USERNAME),
 })
 public class Authorities {
 	public static final String PARAM_USERNAME = "username";
 	public static final String QUERY_ALL = "Users.queryAll";
 	public static final String QUERY_BY_USERNAME = "Users.queryByUsername";
+
 	protected String username;
 	protected String authority;
 

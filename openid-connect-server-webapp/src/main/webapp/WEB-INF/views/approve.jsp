@@ -48,9 +48,9 @@
 								<div>
 								    <p class="alert alert-info">
 								        <i class="icon-globe"></i>
-								        
+
 								        <spring:message code="approve.dynamically_registered"/>
-								        
+
 								   </p>
 								</div>
 							</c:when>
@@ -60,7 +60,7 @@
 									<h4>
 										<i class="icon-globe"></i> <spring:message code="approve.caution.title"/>:
 									</h4>
-									
+
 									<p>
                                     <spring:message code="approve.dynamically_registered" arguments="${ client.createdAt }"/>
                                     </p>

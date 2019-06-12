@@ -70,7 +70,7 @@ public class JpaUserInfoRepository implements UserInfoRepository {
 	 */
 	@Override
 	public UserInfo getByPid(String pid) {
-		TypedQuery<DefaultUserInfo> query = manager.createNamedQuery(DefaultUserInfo.QUERY_BY_SID, DefaultUserInfo.class);
+		TypedQuery<DefaultUserInfo> query = manager.createNamedQuery(DefaultUserInfo.QUERY_BY_PID, DefaultUserInfo.class);
 		query.setParameter(DefaultUserInfo.PARAM_SUB, pid);
 
 		return getSingleResult(query.getResultList());
