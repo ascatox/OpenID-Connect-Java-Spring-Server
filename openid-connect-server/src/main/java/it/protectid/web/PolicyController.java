@@ -3,6 +3,7 @@ package it.protectid.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.WebRequest;
 
 /**
  * @author ascatox
@@ -11,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PolicyController {
 
 	@RequestMapping(value = "/authorize", method = RequestMethod.POST)
-	public void subscription() {
+	public void subscription(WebRequest request) {
 		//TODO Business Logic to implement policy emssion
 
 	}
 
 	@RequestMapping(value = "/approve", method = RequestMethod.POST)
-	public void approve() {
+	public void approve(WebRequest request) {
 		//TODO Business Logic to implement policy consensus
 
 	}
