@@ -19,8 +19,6 @@ import java.util.List;
 @Repository("jpaUsersRepository")
 public class JpaUsersRepository extends JpaUtil{
 
-
-
 	@PersistenceContext(unitName = "defaultPersistenceUnit")
 	private EntityManager manager;
 	@Transactional

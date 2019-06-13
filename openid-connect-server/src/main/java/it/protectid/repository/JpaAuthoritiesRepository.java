@@ -21,20 +21,20 @@ public class JpaAuthoritiesRepository extends JpaUtil{
 	private EntityManager manager;
 
 	@Transactional
-	public List<Authorities> getAuthorityByUsername(String username) throws Exception {
+	public List<Authorities> getAuthorityByUsername(String username) {
 		TypedQuery<Authorities> query = manager.createNamedQuery(Authorities.QUERY_BY_USERNAME, Authorities.class);
 		query.setParameter(Authorities.PARAM_USERNAME, username);
 		return query.getResultList();
 	}
 
 	@Transactional
-	public List<Authorities> getAll() throws Exception {
+	public List<Authorities> getAll() {
 		TypedQuery<Authorities> query = manager.createNamedQuery(Authorities.QUERY_ALL, Authorities.class);
 		return query.getResultList();
 	}
 
 	@Transactional
-	public Authorities createAuthority(String username) throws Exception {
+	public Authorities createAuthority(String username) {
 		Authorities authorityRet = null;
 		if (!StringUtils.isEmpty(username)) {
 			Authorities a = new Authorities(username, Authorities.AUTHORITIES_CONST.ROLE_USER.name());
@@ -44,7 +44,7 @@ public class JpaAuthoritiesRepository extends JpaUtil{
 	}
 
 	@Transactional
-	public void delete(Authorities authorities) throws Exception {
+	public void delete(Authorities authorities) {
 		if (!StringUtils.isEmpty(authorities.getUsername())) {
 			delete(manager, authorities);
 		}

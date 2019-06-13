@@ -54,7 +54,6 @@ public class UserInfoController {
 		} catch (Exception e) {
 			return "Error encountered: " + e.getMessage();
 		}
-
 	}
 
 	private UserInfo getUserInfo(BuildUserInfo buildUserInfo) {
