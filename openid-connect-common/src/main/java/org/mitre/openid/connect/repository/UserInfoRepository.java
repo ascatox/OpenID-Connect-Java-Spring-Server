@@ -18,6 +18,7 @@
 package org.mitre.openid.connect.repository;
 
 import org.mitre.openid.connect.model.UserInfo;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * UserInfo repository interface

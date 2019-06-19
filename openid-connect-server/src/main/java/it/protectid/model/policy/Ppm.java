@@ -4,10 +4,17 @@ import javax.persistence.*;
 
 /**
  * @author ascatox
+ * @author clod16
  */
 @Entity
 @Table(name="ppm")
+@NamedQueries({
+	@NamedQuery(name = Ppm.QUERY_ALL, query = "select p from Ppa p")
+})
 public class Ppm {
+
+	public static final String QUERY_ALL = "Ppm.queryAll";
+
 	String id;
 	String dp;
 	String mod;

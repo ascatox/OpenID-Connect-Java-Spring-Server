@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `access_token`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `access_token` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `token_value` varchar(4096) DEFAULT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `access_token` (
   `auth_holder_id` bigint(20) DEFAULT NULL,
   `approved_site_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,11 +50,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `access_token_permissions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `access_token_permissions` (
   `access_token_id` bigint(20) NOT NULL,
   `permission_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `address` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `formatted` varchar(256) DEFAULT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE `address` (
   `postal_code` varchar(256) DEFAULT NULL,
   `country` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +100,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `approved_site`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `approved_site` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(256) DEFAULT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE `approved_site` (
   `timeout_date` timestamp NULL DEFAULT NULL,
   `whitelisted_site_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,11 +129,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `approved_site_scope`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `approved_site_scope` (
   `owner_id` bigint(20) DEFAULT NULL,
   `scope` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +152,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `authentication_holder`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `authentication_holder` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_auth_id` bigint(20) DEFAULT NULL,
@@ -160,7 +160,7 @@ CREATE TABLE `authentication_holder` (
   `redirect_uri` varchar(2048) DEFAULT NULL,
   `client_id` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,11 +178,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `authentication_holder_authority`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `authentication_holder_authority` (
   `owner_id` bigint(20) DEFAULT NULL,
   `authority` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,12 +200,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `authentication_holder_extension`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `authentication_holder_extension` (
   `owner_id` bigint(20) DEFAULT NULL,
   `extension` varchar(2048) DEFAULT NULL,
   `val` varchar(2048) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,12 +223,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `authentication_holder_request_parameter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `authentication_holder_request_parameter` (
   `owner_id` bigint(20) DEFAULT NULL,
   `param` varchar(2048) DEFAULT NULL,
   `val` varchar(2048) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,11 +246,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `authentication_holder_resource_id`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `authentication_holder_resource_id` (
   `owner_id` bigint(20) DEFAULT NULL,
   `resource_id` varchar(2048) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -268,11 +268,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `authentication_holder_response_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `authentication_holder_response_type` (
   `owner_id` bigint(20) DEFAULT NULL,
   `response_type` varchar(2048) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,11 +290,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `authentication_holder_scope`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `authentication_holder_scope` (
   `owner_id` bigint(20) DEFAULT NULL,
   `scope` varchar(2048) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,13 +312,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `authorities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `authorities` (
   `username` varchar(50) NOT NULL,
   `authority` varchar(50) NOT NULL,
   UNIQUE KEY `ix_authority` (`username`,`authority`),
   CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,14 +337,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `authorization_code`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `authorization_code` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `code` varchar(256) DEFAULT NULL,
   `auth_holder_id` bigint(20) DEFAULT NULL,
   `expiration` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -362,12 +362,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `blacklisted_site`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `blacklisted_site` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `uri` varchar(2048) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -385,7 +385,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `claim`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `claim` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) DEFAULT NULL,
@@ -393,7 +393,7 @@ CREATE TABLE `claim` (
   `claim_type` varchar(1024) DEFAULT NULL,
   `claim_value` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -411,11 +411,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `claim_issuer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `claim_issuer` (
   `owner_id` bigint(20) NOT NULL,
   `issuer` varchar(1024) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -433,11 +433,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `claim_to_permission_ticket`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `claim_to_permission_ticket` (
   `permission_ticket_id` bigint(20) NOT NULL,
   `claim_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -455,11 +455,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `claim_to_policy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `claim_to_policy` (
   `policy_id` bigint(20) NOT NULL,
   `claim_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -477,11 +477,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `claim_token_format`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `claim_token_format` (
   `owner_id` bigint(20) NOT NULL,
   `claim_token_format` varchar(1024) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -499,11 +499,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_authority`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_authority` (
   `owner_id` bigint(20) DEFAULT NULL,
   `authority` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -521,11 +521,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_claims_redirect_uri`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_claims_redirect_uri` (
   `owner_id` bigint(20) DEFAULT NULL,
   `redirect_uri` varchar(2048) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -543,11 +543,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_contact`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_contact` (
   `owner_id` bigint(20) DEFAULT NULL,
   `contact` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -565,11 +565,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_default_acr_value`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_default_acr_value` (
   `owner_id` bigint(20) DEFAULT NULL,
   `default_acr_value` varchar(2000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -587,7 +587,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_details` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `client_description` varchar(256) DEFAULT NULL,
@@ -633,7 +633,7 @@ CREATE TABLE `client_details` (
   `ppa_subs_not` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `client_id` (`client_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -652,11 +652,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_grant_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_grant_type` (
   `owner_id` bigint(20) DEFAULT NULL,
   `grant_type` varchar(2000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -675,11 +675,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_post_logout_redirect_uri`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_post_logout_redirect_uri` (
   `owner_id` bigint(20) DEFAULT NULL,
   `post_logout_redirect_uri` varchar(2000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -697,11 +697,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_redirect_uri`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_redirect_uri` (
   `owner_id` bigint(20) DEFAULT NULL,
   `redirect_uri` varchar(2048) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -720,11 +720,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_request_uri`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_request_uri` (
   `owner_id` bigint(20) DEFAULT NULL,
   `request_uri` varchar(2000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -742,11 +742,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_resource`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_resource` (
   `owner_id` bigint(20) DEFAULT NULL,
   `resource_id` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -764,11 +764,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_response_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_response_type` (
   `owner_id` bigint(20) DEFAULT NULL,
   `response_type` varchar(2000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -786,11 +786,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `client_scope`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `client_scope` (
   `owner_id` bigint(20) DEFAULT NULL,
   `scope` varchar(2048) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -809,7 +809,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `device_code`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `device_code` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `device_code` varchar(1024) DEFAULT NULL,
@@ -819,7 +819,7 @@ CREATE TABLE `device_code` (
   `approved` tinyint(1) DEFAULT NULL,
   `auth_holder_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -837,12 +837,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `device_code_request_parameter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `device_code_request_parameter` (
   `owner_id` bigint(20) DEFAULT NULL,
   `param` varchar(2048) DEFAULT NULL,
   `val` varchar(2048) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -860,11 +860,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `device_code_scope`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `device_code_scope` (
   `owner_id` bigint(20) NOT NULL,
   `scope` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -882,14 +882,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pairwise_identifier`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `pairwise_identifier` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(256) DEFAULT NULL,
   `sub` varchar(256) DEFAULT NULL,
   `sector_identifier` varchar(2048) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -907,14 +907,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pdc`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `pdc` (
   `id` varchar(256) NOT NULL,
   `ppa` varchar(256) DEFAULT NULL,
   `dps` varchar(256) DEFAULT NULL,
   `dpr` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -932,14 +932,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pdw`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `pdw` (
   `pid` varchar(256) DEFAULT NULL,
   `sid` varchar(256) DEFAULT NULL,
   `ppa` varchar(256) DEFAULT NULL,
   `id` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -957,12 +957,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `permission`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `permission` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `resource_set_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -980,11 +980,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `permission_scope`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `permission_scope` (
   `owner_id` bigint(20) NOT NULL,
   `scope` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1002,14 +1002,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `permission_ticket`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `permission_ticket` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ticket` varchar(256) NOT NULL,
   `permission_id` bigint(20) NOT NULL,
   `expiration` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1027,7 +1027,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pip`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `pip` (
   `id` varchar(256) NOT NULL,
   `pk` blob,
@@ -1036,7 +1036,7 @@ CREATE TABLE `pip` (
   `ppa_subs` varchar(256) DEFAULT NULL,
   `ppa_emit` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1055,13 +1055,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `policy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `policy` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(1024) DEFAULT NULL,
   `resource_set_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1079,11 +1079,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `policy_scope`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `policy_scope` (
   `owner_id` bigint(20) NOT NULL,
   `scope` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1101,14 +1101,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ppa`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `ppa` (
   `id` varchar(256) NOT NULL,
   `ppm` varchar(256) DEFAULT NULL,
   `pip` varchar(256) DEFAULT NULL,
   `opt` varchar(4096) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1126,13 +1126,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ppm`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `ppm` (
   `id` varchar(256) NOT NULL,
   `dp` varchar(256) DEFAULT NULL,
   `mod` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1150,7 +1150,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `refresh_token`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `refresh_token` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `token_value` varchar(4096) DEFAULT NULL,
@@ -1158,7 +1158,7 @@ CREATE TABLE `refresh_token` (
   `auth_holder_id` bigint(20) DEFAULT NULL,
   `client_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1176,7 +1176,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `resource_set`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `resource_set` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(1024) NOT NULL,
@@ -1186,7 +1186,7 @@ CREATE TABLE `resource_set` (
   `owner` varchar(256) NOT NULL,
   `client_id` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1204,11 +1204,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `resource_set_scope`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `resource_set_scope` (
   `owner_id` bigint(20) NOT NULL,
   `scope` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1226,13 +1226,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `saved_registered_client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `saved_registered_client` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `issuer` varchar(1024) DEFAULT NULL,
   `registered_client` varchar(8192) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1250,14 +1250,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `saved_user_auth`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `saved_user_auth` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(1024) DEFAULT NULL,
   `authenticated` tinyint(1) DEFAULT NULL,
   `source_class` varchar(2048) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1275,11 +1275,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `saved_user_auth_authority`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `saved_user_auth_authority` (
   `owner_id` bigint(20) DEFAULT NULL,
   `authority` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1297,13 +1297,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `sid`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `sid` (
   `id` varchar(256) NOT NULL,
   `pip` varchar(45) DEFAULT NULL,
   `crt_level` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1321,7 +1321,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `system_scope`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `system_scope` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `scope` varchar(256) NOT NULL,
@@ -1331,7 +1331,7 @@ CREATE TABLE `system_scope` (
   `default_scope` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `scope` (`scope`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1350,11 +1350,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `token_scope`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `token_scope` (
   `owner_id` bigint(20) DEFAULT NULL,
   `scope` varchar(2048) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1372,7 +1372,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `user_info` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `sub` varchar(256) DEFAULT NULL,
@@ -1397,7 +1397,7 @@ CREATE TABLE `user_info` (
   `birthdate` varchar(256) DEFAULT NULL,
   `src` varchar(4096) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1416,13 +1416,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
   PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1441,13 +1441,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `whitelisted_site`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `whitelisted_site` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `creator_user_id` varchar(256) DEFAULT NULL,
   `client_id` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1465,11 +1465,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `whitelisted_site_scope`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+ SET character_set_client = utf8 ;
 CREATE TABLE `whitelisted_site_scope` (
   `owner_id` bigint(20) DEFAULT NULL,
   `scope` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

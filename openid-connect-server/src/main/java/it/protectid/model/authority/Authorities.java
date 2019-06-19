@@ -23,6 +23,7 @@ public class Authorities {
 		ROLE_ADMIN, ROLE_USER
 	}
 
+
 	public Authorities() {
 	}
 
