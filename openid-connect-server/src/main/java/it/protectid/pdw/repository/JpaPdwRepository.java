@@ -22,7 +22,6 @@ public class JpaPdwRepository extends JpaUtil {
 	@PersistenceContext(unitName = "defaultPersistenceUnit")
 	private EntityManager manager;
 
-
 	@Transactional
 	public List<Pdw> getAll() {
 		TypedQuery<Pdw> query = manager.createNamedQuery(Pdw.QUERY_ALL, Pdw.class);

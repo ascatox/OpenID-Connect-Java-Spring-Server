@@ -8,7 +8,6 @@
 <%@ taglib prefix="o" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
 <spring:message code="approve.title" var="title"/>
 <o:header title="${title}"/>
 <o:topbar pageName="Approve" />

@@ -109,7 +109,7 @@ public class ProtectedResourceRegistrationEndpoint {
 			// it parsed!
 
 			//
-			// Now do some post-processing consistency checks on it
+			// Now do some invoke-processing consistency checks on it
 			//
 
 			// clear out any spurious id/secret (clients don't get to pick)

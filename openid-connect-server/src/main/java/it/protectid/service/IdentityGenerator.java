@@ -17,8 +17,10 @@ import java.security.*;
 @Service
 public class IdentityGenerator {
 
-
-	public String generateSID(String addrPip) throws NoSuchProviderException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException {
+	public String generateSID(String addrPip) throws NoSuchProviderException,
+		NoSuchAlgorithmException,
+		NoSuchPaddingException,
+		InvalidKeyException, BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException {
 		/**
 		 *
 		 * 1.1. Genera una coppia asimmetrica di chiavi crittografiche: chiave pubblica (PK) e chiave privata (SK).
@@ -37,9 +39,4 @@ public class IdentityGenerator {
 		final String encryptedSid = ac.encryptText(sid.toString(), sk);
 		return encryptedSid;
 	}
-
-
-	
-
-
 }

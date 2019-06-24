@@ -30,6 +30,7 @@ public class Pip {
 		this.ppaSubs = ppaSubs;
 		this.ppaEmit = ppaEmit;
 	}
+
 	@Id
 	@Column(name = "id")
 	public String getId() {

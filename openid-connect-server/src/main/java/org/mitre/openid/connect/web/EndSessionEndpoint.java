@@ -168,14 +168,14 @@ public class EndSessionEndpoint {
 				new SecurityContextLogoutHandler().logout(request, response, auth);
 			}
 			SecurityContextHolder.getContext().setAuthentication(null);
-			// TODO: hook into other logout post-processing
+			// TODO: hook into other logout invoke-processing
 		}
 		
 		// if the user didn't approve, don't log out but hit the landing page anyway for redirect as needed
 
 		
 		
-		// if we have a client AND the client has post-logout redirect URIs
+		// if we have a client AND the client has invoke-logout redirect URIs
 		// registered AND the URI given is in that list, then...
 		if (!Strings.isNullOrEmpty(redirectUri) && 
 			client != null && client.getPostLogoutRedirectUris() != null) {
@@ -190,7 +190,7 @@ public class EndSessionEndpoint {
 			}
 		}
 		
-		// otherwise, return to a nice post-logout landing page
+		// otherwise, return to a nice invoke-logout landing page
 		return "postLogout";
 	}
 

@@ -81,82 +81,82 @@ public class ClientDetailsEntity implements ClientDetails {
 
 	public static final String PARAM_CLIENT_ID = "clientId";
 
-	private static final int DEFAULT_ID_TOKEN_VALIDITY_SECONDS = 600;
+	protected static final int DEFAULT_ID_TOKEN_VALIDITY_SECONDS = 600;
 
-	private static final long serialVersionUID = -1617727085733786296L;
+	protected static final long serialVersionUID = -1617727085733786296L;
 
-	private Long id;
+	protected Long id;
 
 	/** Fields from the OAuth2 Dynamic Registration Specification */
-	private String clientId = null; // client_id
-	private String clientSecret = null; // client_secret
-	private Set<String> redirectUris = new HashSet<>(); // redirect_uris
-	private String clientName; // client_name
-	private String clientUri; // client_uri
-	private String logoUri; // logo_uri
-	private Set<String> contacts; // contacts
-	private String tosUri; // tos_uri
-	private AuthMethod tokenEndpointAuthMethod = AuthMethod.SECRET_BASIC; // token_endpoint_auth_method
-	private Set<String> scope = new HashSet<>(); // scope
-	private Set<String> grantTypes = new HashSet<>(); // grant_types
-	private Set<String> responseTypes = new HashSet<>(); // response_types
-	private String policyUri;
-	private String jwksUri; // URI pointer to keys
-	private JWKSet jwks; // public key stored by value
-	private String softwareId;
-	private String softwareVersion;
+	protected String clientId = null; // client_id
+	protected String clientSecret = null; // client_secret
+	protected Set<String> redirectUris = new HashSet<>(); // redirect_uris
+	protected String clientName; // client_name
+	protected String clientUri; // client_uri
+	protected String logoUri; // logo_uri
+	protected Set<String> contacts; // contacts
+	protected String tosUri; // tos_uri
+	protected AuthMethod tokenEndpointAuthMethod = AuthMethod.SECRET_BASIC; // token_endpoint_auth_method
+	protected Set<String> scope = new HashSet<>(); // scope
+	protected Set<String> grantTypes = new HashSet<>(); // grant_types
+	protected Set<String> responseTypes = new HashSet<>(); // response_types
+	protected String policyUri;
+	protected String jwksUri; // URI pointer to keys
+	protected JWKSet jwks; // public key stored by value
+	protected String softwareId;
+	protected String softwareVersion;
 
 	/** Fields from OIDC Client Registration Specification **/
-	private AppType applicationType; // application_type
-	private String sectorIdentifierUri; // sector_identifier_uri
-	private SubjectType subjectType; // subject_type
+	protected AppType applicationType; // application_type
+	protected String sectorIdentifierUri; // sector_identifier_uri
+	protected SubjectType subjectType; // subject_type
 
-	private JWSAlgorithm requestObjectSigningAlg = null; // request_object_signing_alg
+	protected JWSAlgorithm requestObjectSigningAlg = null; // request_object_signing_alg
 
-	private JWSAlgorithm userInfoSignedResponseAlg = null; // user_info_signed_response_alg
-	private JWEAlgorithm userInfoEncryptedResponseAlg = null; // user_info_encrypted_response_alg
-	private EncryptionMethod userInfoEncryptedResponseEnc = null; // user_info_encrypted_response_enc
+	protected JWSAlgorithm userInfoSignedResponseAlg = null; // user_info_signed_response_alg
+	protected JWEAlgorithm userInfoEncryptedResponseAlg = null; // user_info_encrypted_response_alg
+	protected EncryptionMethod userInfoEncryptedResponseEnc = null; // user_info_encrypted_response_enc
 
-	private JWSAlgorithm idTokenSignedResponseAlg = null; // id_token_signed_response_alg
-	private JWEAlgorithm idTokenEncryptedResponseAlg = null; // id_token_encrypted_response_alg
-	private EncryptionMethod idTokenEncryptedResponseEnc = null; // id_token_encrypted_response_enc
+	protected JWSAlgorithm idTokenSignedResponseAlg = null; // id_token_signed_response_alg
+	protected JWEAlgorithm idTokenEncryptedResponseAlg = null; // id_token_encrypted_response_alg
+	protected EncryptionMethod idTokenEncryptedResponseEnc = null; // id_token_encrypted_response_enc
 
-	private JWSAlgorithm tokenEndpointAuthSigningAlg = null; // token_endpoint_auth_signing_alg
+	protected JWSAlgorithm tokenEndpointAuthSigningAlg = null; // token_endpoint_auth_signing_alg
 
-	private Integer defaultMaxAge; // default_max_age
-	private Boolean requireAuthTime; // require_auth_time
-	private Set<String> defaultACRvalues; // default_acr_values
+	protected Integer defaultMaxAge; // default_max_age
+	protected Boolean requireAuthTime; // require_auth_time
+	protected Set<String> defaultACRvalues; // default_acr_values
 
-	private String initiateLoginUri; // initiate_login_uri
-	private Set<String> postLogoutRedirectUris; // post_logout_redirect_uris
+	protected String initiateLoginUri; // initiate_login_uri
+	protected Set<String> postLogoutRedirectUris; // post_logout_redirect_uris
 
-	private Set<String> requestUris; // request_uris
+	protected Set<String> requestUris; // request_uris
 
 	/** Fields to support the ClientDetails interface **/
-	private Set<GrantedAuthority> authorities = new HashSet<>();
-	private Integer accessTokenValiditySeconds = 0; // in seconds
-	private Integer refreshTokenValiditySeconds = 0; // in seconds
-	private Set<String> resourceIds = new HashSet<>();
-	private Map<String, Object> additionalInformation = new HashMap<>();
+	protected Set<GrantedAuthority> authorities = new HashSet<>();
+	protected Integer accessTokenValiditySeconds = 0; // in seconds
+	protected Integer refreshTokenValiditySeconds = 0; // in seconds
+	protected Set<String> resourceIds = new HashSet<>();
+	protected Map<String, Object> additionalInformation = new HashMap<>();
 
 	/** Our own fields **/
-	private String clientDescription = ""; // human-readable description
-	private boolean reuseRefreshToken = true; // do we let someone reuse a refresh token?
-	private boolean dynamicallyRegistered = false; // was this client dynamically registered?
-	private boolean allowIntrospection = false; // do we let this client call the introspection endpoint?
-	private Integer idTokenValiditySeconds; //timeout for id tokens
-	private Date createdAt; // time the client was created
-	private boolean clearAccessTokensOnRefresh = true; // do we clear access tokens on refresh?
-	private Integer deviceCodeValiditySeconds; // timeout for device codes
+	protected String clientDescription = ""; // human-readable description
+	protected boolean reuseRefreshToken = true; // do we let someone reuse a refresh token?
+	protected boolean dynamicallyRegistered = false; // was this client dynamically registered?
+	protected boolean allowIntrospection = false; // do we let this client call the introspection endpoint?
+	protected Integer idTokenValiditySeconds; //timeout for id tokens
+	protected Date createdAt; // time the client was created
+	protected boolean clearAccessTokensOnRefresh = true; // do we clear access tokens on refresh?
+	protected Integer deviceCodeValiditySeconds; // timeout for device codes
 
 	/** fields for UMA */
-	private Set<String> claimsRedirectUris;
+	protected Set<String> claimsRedirectUris;
 
 	/** Software statement **/
-	private JWT softwareStatement;
+	protected JWT softwareStatement;
 
 	/** PKCE **/
-	private PKCEAlgorithm codeChallengeMethod;
+	protected PKCEAlgorithm codeChallengeMethod;
 
 	public enum AuthMethod {
 		SECRET_POST("client_secret_post"),

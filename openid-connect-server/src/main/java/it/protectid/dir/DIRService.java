@@ -1,6 +1,5 @@
-package it.protectid.service;
+package it.protectid.dir;
 
-import it.protectid.model.authority.Sid;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -13,13 +12,15 @@ public class DIRService {
 
 	static final String URL_SAWTOOTH = "http://localhost:8080/sawtooth";
 
-	public String post(String payload) {
+	public enum Function{
+		getPIP, insertPIP, deletePIP, getDP, insertDP, deleteDP, getSID, insertSID, deleteSID, getPPM, insertPPM, deletePPM, getPPA, insertPPA, deletePPA, getPDC, insertPDC, deletePDC
+	}
 
+	public String invoke(String fcn, String payloadJson) {
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-		HttpEntity<String> requestBody = new HttpEntity<>(payload, httpHeaders);
+		HttpEntity<String> requestBody = new HttpEntity<>(payloadJson, httpHeaders);
 		RestTemplate restTemplate = new RestTemplate();
 		return restTemplate.postForObject(URL_SAWTOOTH, requestBody, String.class);
-
 	}
 }

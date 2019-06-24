@@ -11,8 +11,6 @@ import javax.persistence.*;
 	@NamedQuery(name = Sid.QUERY_ALL, query = "select s from Sid s"),
 	@NamedQuery(name = Sid.QUERY_BY_ID, query = "select s from Sid s where s.id = :" + Sid.PARAM_ID),
 	@NamedQuery(name = Sid.QUERY_BY_DP, query = "select s from Sid s where s.dp = :" + Sid.PARAM_DP),
-
-
 })
 public class Sid {
 	public static final String QUERY_BY_DP = "Sid.queryByDp";

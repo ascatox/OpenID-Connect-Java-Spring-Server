@@ -11,9 +11,9 @@ import org.springframework.util.StringUtils;
 /**
  * @author clod16
  */
-public class Converter {
+public class JsonConverter {
 
-	private final static Logger log = LogManager.getLogger(Converter.class);
+	private final static Logger log = LogManager.getLogger(JsonConverter.class);
 
 
 	public static String objectToJson(Object object) throws Exception {

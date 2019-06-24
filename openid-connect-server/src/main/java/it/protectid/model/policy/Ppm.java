@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="ppm")
 @NamedQueries({
-	@NamedQuery(name = Ppm.QUERY_ALL, query = "select p from Ppa p")
+	@NamedQuery(name = Ppm.QUERY_ALL, query = "select p from Ppm p")
 })
 public class Ppm {
 
