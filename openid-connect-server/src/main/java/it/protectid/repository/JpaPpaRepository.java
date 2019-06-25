@@ -20,7 +20,6 @@ public class JpaPpaRepository extends JpaUtil {
 	@PersistenceContext(unitName = "defaultPersistenceUnit")
 	private EntityManager manager;
 
-
 	@Transactional
 	public List<Ppa> getAll() throws Exception {
 		TypedQuery<Ppa> query = manager.createNamedQuery(Ppa.QUERY_ALL, Ppa.class);

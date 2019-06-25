@@ -38,8 +38,6 @@ public class Authorities {
 		return username;
 	}
 
-	@Basic
-	@Column(name = "username")
 	public void setUsername(String username) {
 		this.username = username;
 	}

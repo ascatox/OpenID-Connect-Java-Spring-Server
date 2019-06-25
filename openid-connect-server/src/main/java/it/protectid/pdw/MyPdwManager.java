@@ -23,11 +23,9 @@ public class MyPdwManager {
 	public Sid create(Sid sid) throws Exception {
 		return jpaSidRepository.create(sid);
 	}
-
 	public void deleteSid(Sid sid) throws Exception {
 		jpaSidRepository.delete(sid);
 	}
-
 	public List<Sid> getAll(UserInfo userInfo) throws Exception {
 		return jpaSidRepository.getAll();
 	}

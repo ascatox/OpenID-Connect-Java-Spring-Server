@@ -27,11 +27,9 @@ public class JpaSidRepository extends JpaUtil {
 	}
 
 	@Transactional
-	public List<Sid> getSidById() throws Exception {
-		TypedQuery<Sid> query = manager.createNamedQuery(Sid.QUERY_BY_ID, Sid.class);
-		return query.getResultList();
+	public Sid getById(String id) throws Exception {
+		return super.getById(id, Sid.class, manager);
 	}
-
 
 	@Transactional
 	public Sid create(Sid sid) throws Exception {
@@ -41,7 +39,6 @@ public class JpaSidRepository extends JpaUtil {
 		}
 		return ret;
 	}
-
 
 	@Transactional
 	public void delete(Sid sid) throws Exception {

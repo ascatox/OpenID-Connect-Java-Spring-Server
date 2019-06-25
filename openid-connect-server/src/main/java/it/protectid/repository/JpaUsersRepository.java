@@ -17,10 +17,11 @@ import java.util.List;
  * @author ascatox
  */
 @Repository("jpaUsersRepository")
-public class JpaUsersRepository extends JpaUtil{
+public class JpaUsersRepository extends JpaUtil {
 
 	@PersistenceContext(unitName = "defaultPersistenceUnit")
 	private EntityManager manager;
+
 	@Transactional
 	public List<Users> getUserByUsername(String username) throws Exception {
 		TypedQuery<Users> query = manager.createNamedQuery(Users.QUERY_BY_USERNAME, Users.class);
@@ -32,6 +33,11 @@ public class JpaUsersRepository extends JpaUtil{
 	public List<Users> getAll() throws Exception {
 		TypedQuery<Users> query = manager.createNamedQuery(Users.QUERY_ALL, Users.class);
 		return query.getResultList();
+	}
+
+	@Transactional
+	public Users getById(String id) throws Exception {
+		return super.getById(id, Users.class, manager);
 	}
 
 	@Transactional

@@ -3,11 +3,13 @@ package it.protectid.dir;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * @author clod16
  */
+@Service
 public class DIRService {
 
 	static final String URL_SAWTOOTH = "http://localhost:8080/sawtooth";

@@ -51,4 +51,8 @@ public interface ConnectRequestParameters {
 	public String CODE_CHALLENGE_METHOD = "code_challenge_method";
 	public String CODE_VERIFIER = "code_verifier";
 
+	//policy
+	public String PPM = "ppm";
+
+
 }

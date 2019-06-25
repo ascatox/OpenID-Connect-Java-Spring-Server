@@ -1,6 +1,5 @@
 package it.protectid.repository;
 
-import it.protectid.model.policy.Ppa;
 import it.protectid.model.policy.Ppm;
 import org.mitre.util.jpa.JpaUtil;
 import org.springframework.stereotype.Repository;
@@ -21,17 +20,22 @@ public class JpaPpmRepository extends JpaUtil {
 	@PersistenceContext(unitName = "defaultPersistenceUnit")
 	private EntityManager manager;
 
-
 	@Transactional
-	public List<Ppm> getAll(String id) throws Exception {
+	public List<Ppm> getAll() throws Exception {
 		TypedQuery<Ppm> query = manager.createNamedQuery(Ppm.QUERY_ALL, Ppm.class); //FIXME
 		return query.getResultList();
 	}
 
 	@Transactional
-	public List<Ppm> getById(String id) throws Exception {
-		TypedQuery<Ppm> query = manager.createNamedQuery(id, Ppm.class); //FIXME
+	public List<Ppm> getByDp(String dp) throws Exception {
+		TypedQuery<Ppm> query = manager.createNamedQuery(dp, Ppm.class);
+		query.setParameter(Ppm.PARAM_DP, dp);
 		return query.getResultList();
+	}
+
+	@Transactional
+	public Ppm getById(String id) throws Exception {
+		return super.getById(id, Ppm.class, manager);
 	}
 
 	@Transactional

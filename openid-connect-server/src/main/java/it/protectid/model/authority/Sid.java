@@ -10,15 +10,12 @@ import javax.persistence.*;
 @NamedQueries({
 	@NamedQuery(name = Sid.QUERY_ALL, query = "select s from Sid s"),
 	@NamedQuery(name = Sid.QUERY_BY_ID, query = "select s from Sid s where s.id = :" + Sid.PARAM_ID),
-	@NamedQuery(name = Sid.QUERY_BY_DP, query = "select s from Sid s where s.dp = :" + Sid.PARAM_DP),
 })
 public class Sid {
-	public static final String QUERY_BY_DP = "Sid.queryByDp";
 	public static final String QUERY_BY_ID = "Sid.queryById";
 	public static final String QUERY_ALL = "Sid.queryAll";
 	public static final Integer CERT_LEVEL_LOW = 0;
 	public static final String PARAM_ID = "id";
-	public static final String PARAM_DP = "dp";
 
 	public static final Integer CERT_LEVEL_AVG = 1;
 	public static final Integer CERT_LEVEL_HIGH = 2;

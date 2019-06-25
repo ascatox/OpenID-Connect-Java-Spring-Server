@@ -20,11 +20,15 @@ public class JpaPipRepository extends JpaUtil {
 	@PersistenceContext(unitName = "defaultPersistenceUnit")
 	private EntityManager manager;
 
-
 	@Transactional
 	public List<Pip> getAll() {
 		TypedQuery<Pip> query = manager.createNamedQuery(Pip.QUERY_ALL, Pip.class);
 		return query.getResultList();
+	}
+
+	@Transactional
+	public Pip getById(String id) {
+		return super.getById(id, Pip.class, manager);
 	}
 
 	@Transactional

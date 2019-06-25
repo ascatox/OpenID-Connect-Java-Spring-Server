@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name="users")
 @NamedQueries({
 	@NamedQuery(name = Users.QUERY_ALL, query = "select u from Users u"),
-	@NamedQuery(name = Users.QUERY_BY_USERNAME, query = "select u from Users u where u.username = :" + Authorities.PARAM_USERNAME),
+	//@NamedQuery(name = Users.QUERY_BY_USERNAME, query = "select u from Users u where u.username = :" + Authorities.PARAM_USERNAME),
 })
 public class Users {
 

@@ -20,16 +20,6 @@
  */
 package org.mitre.openid.connect.filter;
 
-import static org.mitre.openid.connect.request.ConnectRequestParameters.ERROR;
-import static org.mitre.openid.connect.request.ConnectRequestParameters.LOGIN_HINT;
-import static org.mitre.openid.connect.request.ConnectRequestParameters.LOGIN_REQUIRED;
-import static org.mitre.openid.connect.request.ConnectRequestParameters.MAX_AGE;
-import static org.mitre.openid.connect.request.ConnectRequestParameters.PROMPT;
-import static org.mitre.openid.connect.request.ConnectRequestParameters.PROMPT_LOGIN;
-import static org.mitre.openid.connect.request.ConnectRequestParameters.PROMPT_NONE;
-import static org.mitre.openid.connect.request.ConnectRequestParameters.PROMPT_SEPARATOR;
-import static org.mitre.openid.connect.request.ConnectRequestParameters.STATE;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Date;
@@ -45,6 +35,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import it.protectid.model.policy.PolicyModel;
+import it.protectid.service.PolicyService;
+import it.protectid.service.UserService;
 import org.apache.http.client.utils.URIBuilder;
 import org.mitre.oauth2.model.ClientDetailsEntity;
 import org.mitre.oauth2.service.ClientDetailsEntityService;
@@ -67,6 +60,8 @@ import org.springframework.web.filter.GenericFilterBean;
 
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
+
+import static org.mitre.openid.connect.request.ConnectRequestParameters.*;
 
 /**
  * @author jricher
@@ -95,6 +90,9 @@ public class AuthorizationRequestFilter extends GenericFilterBean {
 	@Autowired(required = false)
 	private LoginHintExtracter loginHintExtracter = new RemoveLoginHintsWithHTTP();
 
+	@Autowired
+	private PolicyService policyService;
+
 	private RequestMatcher requestMatcher = new AntPathRequestMatcher("/authorize");
 
 	/**
@@ -118,7 +116,8 @@ public class AuthorizationRequestFilter extends GenericFilterBean {
 			AuthorizationRequest authRequest = null;
 
 			ClientDetailsEntity client = null;
-
+			PolicyModel policyModel = policyService.retrievePpm(null);
+			session.setAttribute(PPM, policyModel);
 			authRequest = authRequestFactory.createAuthorizationRequest(createRequestMap(request.getParameterMap()));
 			if (!Strings.isNullOrEmpty(authRequest.getClientId())) {
 				client = clientService.loadClientByClientId(authRequest.getClientId());
@@ -239,6 +238,8 @@ public class AuthorizationRequestFilter extends GenericFilterBean {
 		} catch (InvalidClientException e) {
 			// we couldn't find the client, move on and let the rest of the system catch the error
 			chain.doFilter(req, res);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

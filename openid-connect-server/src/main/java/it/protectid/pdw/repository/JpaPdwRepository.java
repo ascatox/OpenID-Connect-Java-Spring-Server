@@ -29,11 +29,9 @@ public class JpaPdwRepository extends JpaUtil {
 	}
 
 	@Transactional
-	public Pdw getPdwById() {
-		TypedQuery<Pdw> query = manager.createNamedQuery(Pdw.QUERY_BY_ID, Pdw.class);
-		return query.getResultList().get(0);
+	public Pdw getById(String id) {
+		return super.getById(id, Pdw.class, manager);
 	}
-
 
 	@Transactional
 	public Pdw create(Pdw pdw) {

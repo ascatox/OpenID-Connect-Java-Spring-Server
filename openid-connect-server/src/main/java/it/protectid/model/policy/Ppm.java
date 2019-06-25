@@ -1,5 +1,7 @@
 package it.protectid.model.policy;
 
+import org.mitre.openid.connect.model.ApprovedSite;
+
 import javax.persistence.*;
 
 /**
@@ -9,11 +11,18 @@ import javax.persistence.*;
 @Entity
 @Table(name="ppm")
 @NamedQueries({
-	@NamedQuery(name = Ppm.QUERY_ALL, query = "select p from Ppm p")
+	@NamedQuery(name = Ppm.QUERY_ALL, query = "select p from Ppm p"),
+	@NamedQuery(name = Ppm.QUERY_BY_ID, query = "select p from Ppm p where p.id = :" + Ppm.PARAM_ID),
+	@NamedQuery(name = Ppm.QUERY_BY_DP, query = "select p from Ppm p where p.dp = :" + Ppm.PARAM_DP),
+
 })
 public class Ppm {
 
 	public static final String QUERY_ALL = "Ppm.queryAll";
+	public static final String PARAM_DP = "dp";
+	public static final String QUERY_BY_DP = "Ppm.queryByDp";
+	public static final String QUERY_BY_ID = "Ppm.queryById";
+	public static final String PARAM_ID = "id";
 
 	String id;
 	String dp;
