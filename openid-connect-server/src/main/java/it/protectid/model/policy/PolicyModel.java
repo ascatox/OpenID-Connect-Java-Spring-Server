@@ -5,11 +5,17 @@ import java.util.List;
 
 public class PolicyModel {
 
-	List<Attribute> attributes;
+	private List<Attribute> attributes;
+
 
 	public PolicyModel() {
 		this.attributes = new ArrayList<>();
 	}
+
+	public PolicyModel(List<Attribute> attributeList) {
+		this.attributes = attributeList;
+	}
+
 	public List<Attribute> getAttributes() {
 		return attributes;
 	}
