@@ -35,6 +35,8 @@
 			</c:choose>
 		</h1>
 
+        <jsp:include page="../WEB-INF/views/model.jsp"/>
+        
 		<form name="confirmationForm"
 			action="${ config.issuer }${ config.issuer.endsWith('/') ? '' : '/' }authorize" method="post">
 
