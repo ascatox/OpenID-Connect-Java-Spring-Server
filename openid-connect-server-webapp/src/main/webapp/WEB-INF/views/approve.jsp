@@ -35,8 +35,6 @@
 			</c:choose>
 		</h1>
 
-        <jsp:include page="../WEB-INF/views/model.jsp"/>
-        
 		<form name="confirmationForm"
 			action="${ config.issuer }${ config.issuer.endsWith('/') ? '' : '/' }authorize" method="post">
 
@@ -115,6 +113,7 @@
 							</div>
 						</div>
 					</c:if>
+					<jsp:include page="model.jsp"/>
 					<c:if test="${ (not empty client.clientDescription) || (not empty client.clientUri) || (not empty client.policyUri) || (not empty client.tosUri) || (not empty contacts) }">
 						<div class="muted moreInformationContainer">
 							<c:out value="${client.clientDescription}" />
@@ -272,7 +271,6 @@
 	</div>
 </div>
 <script type="text/javascript">
-<!--
 
 $(document).ready(function() {
 		$('.claim-tooltip').popover();

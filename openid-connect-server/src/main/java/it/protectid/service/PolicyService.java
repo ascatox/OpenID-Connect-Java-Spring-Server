@@ -15,6 +15,7 @@ import java.util.List;
 public class PolicyService {
 	@Autowired
 	DIRService dirService;
+	@Autowired
 	JpaPpmRepository jpaPpmRepository;
 
 	public PolicyModel retrievePpm(String ppmFromRequest) throws Exception {
@@ -23,7 +24,7 @@ public class PolicyService {
 			List<Ppm> ppms = jpaPpmRepository.getAll();
 			ppm = ppms.get(0);
 		} else ppm = jpaPpmRepository.getById(ppmFromRequest);
-		return OntoConverter.createModelFromOnthology(ppm.getMod());
+		return OntoConverter.createModelFromOntology(ppm.getModel	());
 	}
 
 

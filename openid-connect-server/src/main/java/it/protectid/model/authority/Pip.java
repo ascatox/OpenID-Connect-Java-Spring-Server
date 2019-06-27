@@ -11,26 +11,16 @@ import javax.persistence.*;
 	@NamedQuery(name = Pip.QUERY_ALL, query = "select p from Pip p")
 })
 public class Pip {
-	public static final String QUERY_ALL = "Pip.queryAll";
-	String id;
-	String pk;
-	String sidAuth;
-	String sidCert;
-	String ppaSubs;
-	String ppaEmit;
+	public static final String QUERY_ALL = "Pip.getAll";
+	private String id;
+	private String pk;
+	private String sidAuth;
+	private String sidCert;
+	private String ppaSubs;
+	private String ppaEmit;
 
 	public Pip() {
 	}
-
-	public Pip(String id, String pk, String sidAuth, String sidCert, String ppaSubs, String ppaEmit) {
-		this.id = id;
-		this.pk = pk;
-		this.sidAuth = sidAuth;
-		this.sidCert = sidCert;
-		this.ppaSubs = ppaSubs;
-		this.ppaEmit = ppaEmit;
-	}
-
 	@Id
 	@Column(name = "id")
 	public String getId() {

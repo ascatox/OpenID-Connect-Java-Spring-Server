@@ -56,7 +56,6 @@ public class JpaUtil {
 	public static <T> List<T> getResultPage(TypedQuery<T> query, PageCriteria pageCriteria) {
 		query.setMaxResults(pageCriteria.getPageSize());
 		query.setFirstResult(pageCriteria.getPageNumber() * pageCriteria.getPageSize());
-
 		return query.getResultList();
 	}
 
@@ -73,6 +72,6 @@ public class JpaUtil {
 
 	public static <T, I> T getById(Object id, Class<T> clazz, EntityManager entityManager) {
 		return entityManager.find(clazz, id);
-
 	}
+
 }

@@ -8,20 +8,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "pdc")
 public class Pdc {
-	String id;
-	String ppa;
-	String dps;
-	String dpr;
+	private String id;
+	private String ppa;
+	private String dps;
+	private String dpr;
 
 	public Pdc() {
 	}
 
-	public Pdc(String id, String ppa, String dps, String dpr) {
-		this.id = id;
-		this.ppa = ppa;
-		this.dps = dps;
-		this.dpr = dpr;
-	}
 
 	@Id
 	@Column(name = "id")

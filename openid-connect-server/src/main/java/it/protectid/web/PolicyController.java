@@ -24,7 +24,7 @@ public class PolicyController {
 	DIRService dirService;
 	JpaPpmRepository jpaPpmRepository;
 
-	@RequestMapping(value = "/authorize", method = RequestMethod.POST)
+	@RequestMapping(value = "/emit", method = RequestMethod.POST)
 	public void subscribe(WebRequest request, Model model) throws Exception {
 		//TODO Business Logic to implement policy emission
 		final String userId = request.getParameter("user_id");
@@ -38,7 +38,7 @@ public class PolicyController {
 		jpaPpmRepository.getById(ppm);
 	}
 
-	@RequestMapping(value = "/approve", method = RequestMethod.POST)
+	@RequestMapping(value = "/apply", method = RequestMethod.POST)
 	public void approve(WebRequest request) {
 		//TODO Business Logic to implement policy consensus
 
