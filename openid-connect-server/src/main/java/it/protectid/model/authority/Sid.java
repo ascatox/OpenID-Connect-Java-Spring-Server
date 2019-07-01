@@ -20,22 +20,26 @@ public class Sid {
 	public static final Integer CERT_LEVEL_AVG = 1;
 	public static final Integer CERT_LEVEL_HIGH = 2;
 
-
-	protected String id;
+	protected Long id;
 	protected String pip;
 	protected Integer crtLevel;
 	protected String sig;
+	protected String addr;
 
 	public Sid() {
 	}
 
-	public Sid(String id, String pip, String sig) {
-		this.id = id;
-		this.pip = pip;
-		this.crtLevel = CERT_LEVEL_LOW;
-		this.sig = sig;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
+	public Long getId() {
+		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 	@Basic
 	@Column(name = "sig")
 	public String getSig() {
@@ -46,15 +50,6 @@ public class Sid {
 		this.sig = sig;
 	}
 
-	@Id
-	@Column(name = "id")
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	@Basic
 	@Column(name = "pip")
@@ -76,13 +71,14 @@ public class Sid {
 		this.crtLevel = crtLevel;
 	}
 
-	@Override
-	public String toString() {
-		return "Sid{" +
-			"id='" + id + '\'' +
-			", pip='" + pip + '\'' +
-			", crtLevel=" + crtLevel +
-			", sig='" + sig + '\'' +
-			'}';
+	@Basic
+	@Column(name = "addr")
+	public String getAddr() {
+		return addr;
 	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
 }

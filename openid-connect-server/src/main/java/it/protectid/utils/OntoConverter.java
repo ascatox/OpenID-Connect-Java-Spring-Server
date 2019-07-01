@@ -6,8 +6,9 @@ import org.apache.commons.io.IOUtils;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.query.GraphQueryResult;
 import org.eclipse.rdf4j.query.QueryResults;
-import org.eclipse.rdf4j.query.algebra.Str;
-import org.eclipse.rdf4j.rio.*;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
+import org.eclipse.rdf4j.rio.RDFParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,11 +18,9 @@ import java.io.InputStream;
 
 public class OntoConverter {
 
-	public static final String BASEURI = "http://www.semanticweb.org/claudio/ontologies/2019/4/untitled-ontology-3#";
-	// public static final String BASEURI = "http://cam.eng.it/ontology/beincppsns#";
-
+	public static final String BASEURI = "http://www.protectid.it/ontologies/pd-onto#";
+	public static final String W3CURI = "http://www.w3.org";
 	private static final Logger logger = LoggerFactory.getLogger(OntoConverter.class);
-
 
 	public static PolicyModel createModelFromOntology(String model) throws Exception {
 		return doCreateModelFromOntology(IOUtils.toInputStream(model));
@@ -41,9 +40,13 @@ public class OntoConverter {
 				int i = 1;
 				while (res.hasNext()) {
 					Statement st = res.next();
-					System.out.println(i + ") Subject -> " + removeURI(st.getSubject().toString(), BASEURI) + "; Object -> " + removeURI(st.getObject().toString(), BASEURI) + "; Predicate -> " + removeURI(st.getPredicate().toString(), BASEURI));
+					String predicate = removeURI(st.getPredicate().toString(), BASEURI);
+					String subject = removeURI(st.getSubject().toString(), BASEURI);
+					String object = removeURI(st.getObject().toString(), BASEURI);
+					if (predicate.contains(W3CURI)) continue;
+					logger.debug(i + ") Subject -> " + removeURI(st.getSubject().toString(), BASEURI) + "; Object -> " + removeURI(st.getObject().toString(), BASEURI) + "; Predicate -> " + removeURI(st.getPredicate().toString(), BASEURI));
 					policyModel.getAttributes().add(
-						new PolicyModel.Attribute(st.getSubject().toString(), st.getObject().toString()));
+						new PolicyModel.Attribute(subject, predicate));
 					i++;
 				}
 			}
@@ -69,8 +72,6 @@ public class OntoConverter {
 		InputStream targetStream = null;
 		try {
 			File onto = new File("/Users/ascatox/Documents/Sviluppo/workspace_oss/OpenID-Connect-Java-Spring-Server/openid-connect-server/src/main/java/it/protectid/utils/onto.owl");
-//			File onto = new File("/Users/ascatox/Documents/Sviluppo/workspace_oss/OpenID-Connect-Java-Spring-Server/openid-connect-server/src/main/java/it/protectid/utils/export_reduced.rdf");
-
 			targetStream = FileUtils.openInputStream(onto);
 			PolicyModel modelFromOnthology = createModelFromOntology(targetStream);
 		} catch (IOException e) {

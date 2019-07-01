@@ -2,7 +2,12 @@ package it.protectid.service;
 
 import it.protectid.crypto.AsymmetricCryptography;
 import it.protectid.crypto.GenerateKeys;
+import it.protectid.dir.DIRService;
 import it.protectid.model.authority.Sid;
+import it.protectid.pdw.MyPdwManager;
+import it.protectid.repository.JpaSidRepository;
+import it.protectid.utils.JsonConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.BadPaddingException;
@@ -16,11 +21,14 @@ import java.security.*;
  */
 @Service
 public class IdentityGenerator {
+	@Autowired
+	private DIRService dirService;
+	@Autowired
+	private JpaSidRepository jpaSidRepository;
+	@Autowired
+	private MyPdwManager myPdwManager;
 
-	public String generateSID(String addrPip) throws NoSuchProviderException,
-		NoSuchAlgorithmException,
-		NoSuchPaddingException,
-		InvalidKeyException, BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException {
+	public Sid generateSID(String pid, String addrPip, String addrDp) throws Exception {
 		/**
 		 *
 		 * 1.1. Genera una coppia asimmetrica di chiavi crittografiche: chiave pubblica (PK) e chiave privata (SK).
@@ -34,9 +42,17 @@ public class IdentityGenerator {
 		 * 1.2. Deriva da PK una stringa alfanumerica che rappresenti l’indirizzo pubblico della SID, applicando un algoritmo di hashing.
 		 */
 		final String addrSid = gk.hashKey(pk.getEncoded());
-		Sid sid = new Sid(addrSid, addrPip);
+		Sid sid = new Sid();
+		sid.setPip(addrPip);
 		AsymmetricCryptography ac = new AsymmetricCryptography();
-		final String encryptedSid = ac.encryptText(sid.toString(), sk);
-		return encryptedSid;
+		final String sig = ac.encryptText(sid.toString(), sk);
+		final String address = ac.encryptText(sid.toString(), pk);
+		sid.setSig(sig);
+		sid.setAddr(address);
+		sid.setCrtLevel(Sid.CERT_LEVEL_LOW); //TODO
+		dirService.invoke(DIRService.Function.insertSID.name(), JsonConverter.objectToJson(sid));
+		jpaSidRepository.create(sid);
+		myPdwManager.create(pid, addrDp, address, sk.toString(), pk.toString(), null);
+		return sid;
 	}
 }

@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "pdc")
 public class Pdc {
+
 	private String id;
 	private String ppa;
 	private String dps;

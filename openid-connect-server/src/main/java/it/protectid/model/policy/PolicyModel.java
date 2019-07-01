@@ -1,10 +1,8 @@
 package it.protectid.model.policy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PolicyModel {
-
 	private List<Attribute> attributes;
 
 
@@ -22,6 +20,16 @@ public class PolicyModel {
 
 	public void setAttributes(List<Attribute> attributes) {
 		this.attributes = attributes;
+	}
+
+
+	public Set<String> getAttributeKeys() {
+		Map keyMap = new HashMap<String, String>();
+		for (Attribute attribute :
+			this.getAttributes()) {
+			keyMap.put(attribute.getName(), attribute.getName());
+		}
+		return keyMap.keySet();
 	}
 
 	public static class Attribute {

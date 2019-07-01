@@ -1,8 +1,14 @@
 package it.protectid.pdw;
 
+import it.protectid.model.authority.Pip;
 import it.protectid.model.authority.Sid;
 import it.protectid.model.policy.Ppa;
+import it.protectid.pdw.model.Pdw;
+import it.protectid.pdw.repository.JpaPdwRepository;
+import it.protectid.repository.JpaPipRepository;
 import it.protectid.repository.JpaSidRepository;
+import it.protectid.sid.SidRecordService;
+import org.eclipse.rdf4j.query.algebra.Str;
 import org.mitre.openid.connect.model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,14 +24,30 @@ import java.util.List;
 public class MyPdwManager {
 
 	@Autowired
-	JpaSidRepository jpaSidRepository;
+	private SidRecordService sidRecordService;
 
-	public Sid create(Sid sid) throws Exception {
-		return jpaSidRepository.create(sid);
+	@Autowired
+	private JpaPipRepository jpaPipRepository;
+
+	@Autowired
+	private JpaSidRepository jpaSidRepository;
+
+	@Autowired
+	private JpaPdwRepository jpaPdwRepository;
+
+	private Pip defaultPip = jpaPipRepository.getById("1"); //TODO
+
+
+	public Pdw create(String pid, String addrDp, String addrSid, String sk, String pk, String ppa) throws Exception {
+		Pdw pdw = new Pdw(pid, addrSid, pk, sk, addrDp, ppa);
+		jpaPdwRepository.create(pdw);
+		return pdw;
 	}
+
 	public void deleteSid(Sid sid) throws Exception {
 		jpaSidRepository.delete(sid);
 	}
+
 	public List<Sid> getAll(UserInfo userInfo) throws Exception {
 		return jpaSidRepository.getAll();
 	}

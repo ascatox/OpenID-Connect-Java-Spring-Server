@@ -113,7 +113,6 @@
 							</div>
 						</div>
 					</c:if>
-					<jsp:include page="model.jsp"/>
 					<c:if test="${ (not empty client.clientDescription) || (not empty client.clientUri) || (not empty client.policyUri) || (not empty client.tosUri) || (not empty contacts) }">
 						<div class="muted moreInformationContainer">
 							<c:out value="${client.clientDescription}" />
@@ -156,6 +155,8 @@
 							</c:otherwise>
 						</c:choose>
 					</div>
+
+					<jsp:include page="model.jsp"/>
 
 					<c:if test="${ client.subjectType == 'PAIRWISE' }">
 						<div class="alert alert-success">

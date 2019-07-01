@@ -20,24 +20,10 @@
  */
 package org.mitre.openid.connect.filter;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
 import it.protectid.model.policy.PolicyModel;
 import it.protectid.service.PolicyService;
-import it.protectid.service.UserService;
 import org.apache.http.client.utils.URIBuilder;
 import org.mitre.oauth2.model.ClientDetailsEntity;
 import org.mitre.oauth2.service.ClientDetailsEntityService;
@@ -58,8 +44,19 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.mitre.openid.connect.request.ConnectRequestParameters.*;
 
@@ -94,13 +91,11 @@ public class AuthorizationRequestFilter extends GenericFilterBean {
 	private PolicyService policyService;
 
 	private RequestMatcher requestMatcher = new AntPathRequestMatcher("/authorize");
-
 	/**
 	 *
 	 */
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession();
@@ -110,12 +105,12 @@ public class AuthorizationRequestFilter extends GenericFilterBean {
 			chain.doFilter(req, res);
 			return;
 		}
-
 		try {
 			// we have to create our own auth request in order to get at all the parmeters appropriately
 			AuthorizationRequest authRequest = null;
 
 			ClientDetailsEntity client = null;
+			// FIXME Fixed always the first
 			PolicyModel policyModel = policyService.retrievePpm(null);
 			session.setAttribute(PPM, policyModel);
 			authRequest = authRequestFactory.createAuthorizationRequest(createRequestMap(request.getParameterMap()));
@@ -131,7 +126,6 @@ public class AuthorizationRequestFilter extends GenericFilterBean {
 			} else {
 				session.removeAttribute(LOGIN_HINT);
 			}
-
 			if (authRequest.getExtensions().get(PROMPT) != null) {
 				// we have a "prompt" parameter
 				String prompt = (String)authRequest.getExtensions().get(PROMPT);

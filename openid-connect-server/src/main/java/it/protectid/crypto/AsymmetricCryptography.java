@@ -50,6 +50,11 @@ public class AsymmetricCryptography {
 		writeToFile(output, this.cipher.doFinal(input));
 	}
 
+	public void encryptFile(byte[] input, File output, PublicKey key) throws IOException, GeneralSecurityException {
+		this.cipher.init(Cipher.ENCRYPT_MODE, key);
+		writeToFile(output, this.cipher.doFinal(input));
+	}
+
 	public void decryptFile(byte[] input, File output, PublicKey key) throws IOException, GeneralSecurityException {
 		this.cipher.init(Cipher.DECRYPT_MODE, key);
 		writeToFile(output, this.cipher.doFinal(input));
@@ -63,6 +68,11 @@ public class AsymmetricCryptography {
 	}
 
 	public String encryptText(String msg, PrivateKey key) throws NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+		this.cipher.init(Cipher.ENCRYPT_MODE, key);
+		return Base64.encodeBase64String(cipher.doFinal(msg.getBytes("UTF-8")));
+	}
+
+	public String encryptText(String msg, PublicKey key) throws NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
 		this.cipher.init(Cipher.ENCRYPT_MODE, key);
 		return Base64.encodeBase64String(cipher.doFinal(msg.getBytes("UTF-8")));
 	}

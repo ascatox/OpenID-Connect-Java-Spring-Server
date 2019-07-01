@@ -1,9 +1,7 @@
 package it.protectid.pdw.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @author ascatox
@@ -15,28 +13,43 @@ public class Pdw {
 	public static final String QUERY_ALL = "Pdw.queryAll";
 	public static final String QUERY_BY_ID = "Pdw.queryById";
 	public static final String PARAM_ID = "id";
-	private String id;
+	private Long id;
 	private String pid;
-	private String sid;
+	private String addrSid;
+	private String pkSid;
+	private String skSid;
+	private String addrDp;
 	private String ppa;
+	private Date tsc;
+	private Date tse;
 
-	public Pdw(String id, String pid, String sid, String ppa) {
-		this.id = id;
-		this.pid = pid;
-		this.sid = sid;
-		this.ppa = ppa;
+	public Pdw(String addrSid, String addrDp) {
+		this.addrSid = addrSid;
+		this.addrDp = addrDp;
+		this.tsc = new Date();
 	}
 
 	public Pdw() {
 	}
 
+	public Pdw(String pid, String addrSid, String pkSid, String skSid, String addrDp, String ppa) {
+		this.pid = pid;
+		this.addrSid = addrSid;
+		this.pkSid = pkSid;
+		this.skSid = skSid;
+		this.addrDp = addrDp;
+		this.ppa = ppa;
+		this.tsc = new Date();
+	}
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -48,12 +61,36 @@ public class Pdw {
 		this.pid = pid;
 	}
 
-	public String getSid() {
-		return sid;
+	public String getAddrSid() {
+		return addrSid;
 	}
 
-	public void setSid(String sid) {
-		this.sid = sid;
+	public void setAddrSid(String addrSid) {
+		this.addrSid = addrSid;
+	}
+
+	public String getPkSid() {
+		return pkSid;
+	}
+
+	public void setPkSid(String pkSid) {
+		this.pkSid = pkSid;
+	}
+
+	public String getSkSid() {
+		return skSid;
+	}
+
+	public void setSkSid(String skSid) {
+		this.skSid = skSid;
+	}
+
+	public String getAddrDp() {
+		return addrDp;
+	}
+
+	public void setAddrDp(String addrDp) {
+		this.addrDp = addrDp;
 	}
 
 	public String getPpa() {
@@ -62,5 +99,26 @@ public class Pdw {
 
 	public void setPpa(String ppa) {
 		this.ppa = ppa;
+	}
+
+	@Basic
+	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	@Column(name = "tsc")
+	public Date getTsc() {
+		return tsc;
+	}
+
+	public void setTsc(Date tsc) {
+		this.tsc = tsc;
+	}
+	@Basic
+	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	@Column(name = "tse")
+	public Date getTse() {
+		return tse;
+	}
+
+	public void setTse(Date tse) {
+		this.tse = tse;
 	}
 }
