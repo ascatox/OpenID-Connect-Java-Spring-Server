@@ -6,7 +6,7 @@ import javax.persistence.*;
  * @author ascatox
  */
 @Entity
-@Table(name="sid")
+@Table(name = "sid")
 @NamedQueries({
 	@NamedQuery(name = Sid.QUERY_ALL, query = "select s from Sid s"),
 	@NamedQuery(name = Sid.QUERY_BY_ID, query = "select s from Sid s where s.id = :" + Sid.PARAM_ID),
@@ -24,14 +24,26 @@ public class Sid {
 	protected String id;
 	protected String pip;
 	protected Integer crtLevel;
+	protected String sig;
 
 	public Sid() {
 	}
 
-	public Sid(String id, String pip) {
+	public Sid(String id, String pip, String sig) {
 		this.id = id;
 		this.pip = pip;
 		this.crtLevel = CERT_LEVEL_LOW;
+		this.sig = sig;
+	}
+
+	@Basic
+	@Column(name = "sig")
+	public String getSig() {
+		return sig;
+	}
+
+	public void setSig(String sig) {
+		this.sig = sig;
 	}
 
 	@Id
@@ -43,6 +55,7 @@ public class Sid {
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	@Basic
 	@Column(name = "pip")
 	public String getPip() {
@@ -52,6 +65,7 @@ public class Sid {
 	public void setPip(String pip) {
 		this.pip = pip;
 	}
+
 	@Basic
 	@Column(name = "crtLevel")
 	public Integer getCrtLevel() {
@@ -68,6 +82,7 @@ public class Sid {
 			"id='" + id + '\'' +
 			", pip='" + pip + '\'' +
 			", crtLevel=" + crtLevel +
+			", sig='" + sig + '\'' +
 			'}';
 	}
 }
