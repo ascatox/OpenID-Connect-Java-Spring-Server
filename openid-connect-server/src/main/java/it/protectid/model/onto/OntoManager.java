@@ -16,8 +16,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class OntoManager
-{
+/**
+ * @author ascatox
+ * Reference https://rdf4j.eclipse.org/documentation/
+ */
+
+public class OntoManager {
 
 	public static final String BASEURI = "http://www.protectid.it/ontologies/pd-onto#";
 	public static final String W3CURI = "http://www.w3.org";
@@ -72,7 +76,7 @@ public class OntoManager
 	public static void main(String[] args) throws IOException {
 		InputStream targetStream = null;
 		try {
-			File onto = new File("/Users/ascatox/Documents/Sviluppo/workspace_oss/OpenID-Connect-Java-Spring-Server/openid-connect-server/src/main/java/it/protectid/utils/onto.owl");
+			File onto = new File("/Users/ascatox/Documents/Sviluppo/workspace_oss/OpenID-Connect-Java-Spring-Server/openid-connect-server/src/main/java/it/protectid/model/onto/onto.owl");
 			targetStream = FileUtils.openInputStream(onto);
 			PolicyModel modelFromOnthology = createModelFromOntology(targetStream);
 		} catch (IOException e) {

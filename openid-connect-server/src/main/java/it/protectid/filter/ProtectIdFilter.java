@@ -19,8 +19,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.mitre.openid.connect.request.ConnectRequestParameters.PPM;
-
 @Component("protectIdFilter")
 public class ProtectIdFilter extends GenericFilterBean {
 

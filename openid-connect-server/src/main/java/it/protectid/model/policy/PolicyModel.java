@@ -5,7 +5,6 @@ import java.util.*;
 public class PolicyModel {
 	private List<Attribute> attributes;
 
-
 	public PolicyModel() {
 		this.attributes = new ArrayList<>();
 	}
@@ -22,7 +21,6 @@ public class PolicyModel {
 		this.attributes = attributes;
 	}
 
-
 	public Set<String> getAttributeKeys() {
 		Map keyMap = new HashMap<String, String>();
 		for (Attribute attribute :
@@ -35,7 +33,7 @@ public class PolicyModel {
 	public static class Attribute {
 		private String name;
 		private String value;
-		private boolean check;
+		private boolean confirm;
 
 		public Attribute(String name, String value) {
 			this.name = name;
@@ -58,12 +56,12 @@ public class PolicyModel {
 			this.value = value;
 		}
 
-		public boolean isCheck() {
-			return check;
+		public boolean isConfirm() {
+			return confirm;
 		}
 
-		public void setCheck(boolean check) {
-			this.check = check;
+		public void setConfirm(boolean confirm) {
+			this.confirm = confirm;
 		}
 	}
 }

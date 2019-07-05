@@ -7,7 +7,7 @@ create table users(
   password varchar2(50) not null,
   enabled number(1) not null,
 
-  constraint enabled_check check (enabled in (1, 0))
+  constraint enabled_check confirm (enabled in (1, 0))
 );
 
 create table authorities (
