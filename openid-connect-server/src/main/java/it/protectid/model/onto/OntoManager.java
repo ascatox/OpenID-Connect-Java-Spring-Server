@@ -37,6 +37,9 @@ public class OntoManager {
 
 
 	public static PolicyModel doCreateModelFromOntology(InputStream inputStream) throws Exception {
+		//TODO
+		// Questa parte va interamente rivista sulla base del nuovo modello sulla quale sta lavorando
+		// Massimiliano qui va capito come estrare le informazioni dall'Ontologia servirà Sparql https://it.wikipedia.org/wiki/SPARQL ???
 		try {
 			PolicyModel policyModel = new PolicyModel();
 			String baseURI = BASEURI;

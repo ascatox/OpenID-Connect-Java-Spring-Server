@@ -41,9 +41,10 @@ public class ProtectIdFilter extends GenericFilterBean {
 			policyModel = policyService.retrievePpm(inputParams.get(PPM));
 			session.setAttribute(PPM, policyModel);
 			if (PROTECTID_AUTHORIZE.equals(inputParams.get(PROTECTID_AUTHORIZE))) {
-				//Authorized Policy
 				//TODO
-				policyService.acceptPpa("", "");
+				// Qui è dove intercettiamo le chiamate e dove verranno fatti i redirect col DP per la
+				// gestione della Policy
+				policyService.acceptPpa("", ""); // Capire cosa e come passare
 				//res.sendRedirect("");
 			}
 			chain.doFilter(request, response);
