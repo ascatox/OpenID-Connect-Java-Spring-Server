@@ -14,7 +14,7 @@ public class DIRService {
 
 	static final String URL_SAWTOOTH = "http://localhost:8080/sawtooth";
 
-	public enum Function{
+	public enum Function {
 		getPIP, insertPIP, deletePIP, getDP, insertDP, deleteDP, getSID, insertSID, deleteSID, getPPM, insertPPM, deletePPM, getPPA, insertPPA, deletePPA, getPDC, insertPDC, deletePDC
 	}
 

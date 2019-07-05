@@ -8,7 +8,6 @@ import it.protectid.pdw.repository.JpaPdwRepository;
 import it.protectid.repository.JpaPipRepository;
 import it.protectid.repository.JpaSidRepository;
 import it.protectid.sid.SidRecordService;
-import org.eclipse.rdf4j.query.algebra.Str;
 import org.mitre.openid.connect.model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,8 +34,11 @@ public class MyPdwManager {
 	@Autowired
 	private JpaPdwRepository jpaPdwRepository;
 
-	private Pip defaultPip = jpaPipRepository.getById("1"); //TODO
 
+	public MyPdwManager() {
+	}
+
+	//private Pip defaultPip = jpaPipRepository.getById("1"); //TODO
 
 	public Pdw create(String pid, String addrDp, String addrSid, String sk, String pk, String ppa) throws Exception {
 		Pdw pdw = new Pdw(pid, addrSid, pk, sk, addrDp, ppa);

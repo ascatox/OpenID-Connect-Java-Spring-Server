@@ -39,8 +39,9 @@ public class JpaPipRepository extends JpaUtil {
 		}
 		return ret;
 	}
+
 	@Transactional
-	public void delete(Pip pip)  {
+	public void delete(Pip pip) {
 		if (!StringUtils.isEmpty(pip.getId())) {
 			delete(manager, pip);
 		}

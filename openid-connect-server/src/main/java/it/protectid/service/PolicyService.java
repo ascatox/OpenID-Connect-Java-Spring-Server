@@ -28,4 +28,9 @@ public class PolicyService {
 	}
 
 
+	public void acceptPpa(String pid, String sid){
+
+	}
+
+
 }

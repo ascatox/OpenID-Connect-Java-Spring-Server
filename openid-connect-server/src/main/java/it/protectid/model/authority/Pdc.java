@@ -17,7 +17,6 @@ public class Pdc {
 	public Pdc() {
 	}
 
-
 	@Id
 	@Column(name = "id")
 	public String getId() {

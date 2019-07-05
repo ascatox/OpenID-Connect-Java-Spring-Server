@@ -260,6 +260,7 @@
                 <spring:message code="approve.label.deny" var="deny_label"/>
 				<input id="user_oauth_approval" name="user_oauth_approval" value="true" type="hidden" />
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<input type="hidden" name="protectid-authorize" value="protectid-authorize" />
 				<input name="authorize" value="${authorize_label}" type="submit"
 				onclick="$('#user_oauth_approval').attr('value',true)" class="btn btn-success btn-large" /> 
 				&nbsp; 

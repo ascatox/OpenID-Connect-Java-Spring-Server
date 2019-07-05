@@ -16,7 +16,6 @@ public class Sid {
 	public static final String QUERY_ALL = "Sid.queryAll";
 	public static final Integer CERT_LEVEL_LOW = 0;
 	public static final String PARAM_ID = "id";
-
 	public static final Integer CERT_LEVEL_AVG = 1;
 	public static final Integer CERT_LEVEL_HIGH = 2;
 

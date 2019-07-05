@@ -47,6 +47,7 @@
 		
 		<security:form-login login-page="/login" authentication-failure-url="/login?error=failure" authentication-success-handler-ref="authenticationTimeStamper" />
 		<security:custom-filter ref="authRequestFilter" after="SECURITY_CONTEXT_FILTER" />
+		<security:custom-filter ref="protectIdFilter" after="LAST"/>
 		<security:logout logout-url="/logout" />
 		<security:anonymous />
 		<security:expression-handler ref="oauthWebExpressionHandler" />

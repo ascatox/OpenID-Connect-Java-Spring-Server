@@ -15,7 +15,7 @@ public class SidRecordService {
 	private static final Logger logger = LoggerFactory.getLogger(SidRecordService.class);
 
 	public Sid generateRecord(Pip pip) throws Exception {
-		return identityGenerator.generateSID(pip.getId());
+		return identityGenerator.generateSID(pip.getId(), "", ""); //FIXME
 	}
 
 
