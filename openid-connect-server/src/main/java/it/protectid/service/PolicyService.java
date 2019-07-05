@@ -1,10 +1,9 @@
 package it.protectid.service;
 
-import it.protectid.dir.DIRService;
+import it.protectid.model.onto.OntoManager;
 import it.protectid.model.policy.PolicyModel;
 import it.protectid.model.policy.Ppm;
 import it.protectid.repository.JpaPpmRepository;
-import it.protectid.utils.OntoConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -24,7 +23,7 @@ public class PolicyService {
 			List<Ppm> ppms = jpaPpmRepository.getAll();
 			ppm = ppms.get(0);
 		} else ppm = jpaPpmRepository.getById(ppmFromRequest);
-		return OntoConverter.createModelFromOntology(ppm.getModel	());
+		return OntoManager.createModelFromOntology(ppm.getModel	());
 	}
 
 

@@ -1,4 +1,4 @@
-package it.protectid.dir;
+package it.protectid.service;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

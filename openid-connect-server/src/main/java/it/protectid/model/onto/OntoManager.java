@@ -1,4 +1,4 @@
-package it.protectid.utils;
+package it.protectid.model.onto;
 
 import it.protectid.model.policy.PolicyModel;
 import org.apache.commons.io.FileUtils;
@@ -16,11 +16,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class OntoConverter {
+public class OntoManager
+{
 
 	public static final String BASEURI = "http://www.protectid.it/ontologies/pd-onto#";
 	public static final String W3CURI = "http://www.w3.org";
-	private static final Logger logger = LoggerFactory.getLogger(OntoConverter.class);
+	private static final Logger logger = LoggerFactory.getLogger(OntoManager.class);
 
 	public static PolicyModel createModelFromOntology(String model) throws Exception {
 		return doCreateModelFromOntology(IOUtils.toInputStream(model));

@@ -87,9 +87,6 @@ public class AuthorizationRequestFilter extends GenericFilterBean {
 	@Autowired(required = false)
 	private LoginHintExtracter loginHintExtracter = new RemoveLoginHintsWithHTTP();
 
-	@Autowired
-	private PolicyService policyService;
-
 	private RequestMatcher requestMatcher = new AntPathRequestMatcher("/authorize");
 	/**
 	 *
@@ -110,9 +107,7 @@ public class AuthorizationRequestFilter extends GenericFilterBean {
 			AuthorizationRequest authRequest = null;
 
 			ClientDetailsEntity client = null;
-			// FIXME Fixed always the first
-			PolicyModel policyModel = policyService.retrievePpm(null);
-			session.setAttribute(PPM, policyModel);
+
 			authRequest = authRequestFactory.createAuthorizationRequest(createRequestMap(request.getParameterMap()));
 			if (!Strings.isNullOrEmpty(authRequest.getClientId())) {
 				client = clientService.loadClientByClientId(authRequest.getClientId());

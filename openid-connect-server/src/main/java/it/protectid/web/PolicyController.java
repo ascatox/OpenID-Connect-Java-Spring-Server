@@ -1,6 +1,6 @@
 //package it.protectid.web;
 //
-//import it.protectid.dir.DIRService;
+//import it.protectid.service.DIRService;
 //import it.protectid.model.client.Dp;
 //import it.protectid.model.authority.Sid;
 //import it.protectid.pdw.MyPdwManager;

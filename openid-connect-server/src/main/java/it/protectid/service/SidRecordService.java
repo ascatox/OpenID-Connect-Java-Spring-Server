@@ -1,8 +1,7 @@
-package it.protectid.sid;
+package it.protectid.service;
 
 import it.protectid.model.authority.Pip;
 import it.protectid.model.authority.Sid;
-import it.protectid.service.IdentityGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,13 +1,12 @@
 package it.protectid.pdw;
 
-import it.protectid.model.authority.Pip;
 import it.protectid.model.authority.Sid;
 import it.protectid.model.policy.Ppa;
 import it.protectid.pdw.model.Pdw;
 import it.protectid.pdw.repository.JpaPdwRepository;
 import it.protectid.repository.JpaPipRepository;
 import it.protectid.repository.JpaSidRepository;
-import it.protectid.sid.SidRecordService;
+import it.protectid.service.SidRecordService;
 import org.mitre.openid.connect.model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
