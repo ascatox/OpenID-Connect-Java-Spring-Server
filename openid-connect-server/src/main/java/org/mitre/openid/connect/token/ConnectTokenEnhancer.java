@@ -131,7 +131,7 @@ public class ConnectTokenEnhancer implements TokenEnhancer {
 				token.setIdToken(idToken);
 			} else {
 				// can't create an id token if we can't find the user
-				logger.warn("Request for ID token when no user is present.");
+				logger.warn("ObjectRequest for ID token when no user is present.");
 			}
 		}
 

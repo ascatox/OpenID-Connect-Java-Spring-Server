@@ -225,17 +225,17 @@ public class DiscoveryEndpoint {
 		        ID Token to encode the Claims in a JWT [JWT].
 		    request_object_signing_alg_values_supported
 		        OPTIONAL. JSON array containing a list of the JWS signing algorithms (alg values) supported by the Authorization Server for
-		        the Request Object described in Section 2.9 of OpenID Connect Messages 1.0 [OpenID.Messages]. These algorithms are used both when
-		        the Request Object is passed by value (using the request parameter) and when it is passed by reference (using the request_uri parameter).
+		        the ObjectRequest Object described in Section 2.9 of OpenID Connect Messages 1.0 [OpenID.Messages]. These algorithms are used both when
+		        the ObjectRequest Object is passed by value (using the request parameter) and when it is passed by reference (using the request_uri parameter).
 		        Servers SHOULD support none and RS256.
 		    request_object_encryption_alg_values_supported
 		        OPTIONAL. JSON array containing a list of the JWE encryption algorithms (alg values) supported by the Authorization Server for
-		        the Request Object described in Section 2.9 of OpenID Connect Messages 1.0 [OpenID.Messages]. These algorithms are used both when
-		        the Request Object is passed by value and when it is passed by reference.
+		        the ObjectRequest Object described in Section 2.9 of OpenID Connect Messages 1.0 [OpenID.Messages]. These algorithms are used both when
+		        the ObjectRequest Object is passed by value and when it is passed by reference.
 		    request_object_encryption_enc_values_supported
 		        OPTIONAL. JSON array containing a list of the JWE encryption algorithms (enc values) supported by the Authorization Server for
-		        the Request Object described in Section 2.9 of OpenID Connect Messages 1.0 [OpenID.Messages]. These algorithms are used both when
-		        the Request Object is passed by value and when it is passed by reference.
+		        the ObjectRequest Object described in Section 2.9 of OpenID Connect Messages 1.0 [OpenID.Messages]. These algorithms are used both when
+		        the ObjectRequest Object is passed by value and when it is passed by reference.
 		    token_endpoint_auth_methods_supported
 		        OPTIONAL. JSON array containing a list of authentication methods supported by this Token Endpoint.
 		        The options are client_secret_post, client_secret_basic, client_secret_jwt, and private_key_jwt,
