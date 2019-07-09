@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class PolicyService {
 	@Autowired
-	DIRService dirService;
+	DirRestClient dirRestClient;
 	@Autowired
 	JpaPpmRepository jpaPpmRepository;
 
@@ -31,11 +31,11 @@ public class PolicyService {
 
 
 	public void acceptPpa(String pid, String sid){
+
 		//TODO
 		// Questa è la parte centrale della gestione della Policy
 		// è la parte post accettazione della Policy dove uno prendi i dati e fa tutto il giro
 		// descritto 07C al punto 6
 	}
-
 
 }

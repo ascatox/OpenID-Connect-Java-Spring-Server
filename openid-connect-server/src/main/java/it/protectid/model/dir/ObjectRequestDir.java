@@ -1,14 +1,14 @@
-package it.protectid.dir.model;
+package it.protectid.model.dir;
 
-public class ObjectRequest {
+public class ObjectRequestDir {
 
 	private String fcn;
 	private String payload;
 
-	public ObjectRequest() {
+	public ObjectRequestDir() {
 	}
 
-	public ObjectRequest(String fcn, String payload) {
+	public ObjectRequestDir(String fcn, String payload) {
 		this.fcn = fcn;
 		this.payload = payload;
 	}
@@ -31,7 +31,7 @@ public class ObjectRequest {
 
 	@Override
 	public String toString() {
-		return "ObjectRequest{" +
+		return "ObjectRequestDir{" +
 			"fcn='" + fcn + '\'' +
 			", payload='" + payload + '\'' +
 			'}';

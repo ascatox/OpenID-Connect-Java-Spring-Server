@@ -1,6 +1,9 @@
 package it.protectid.filter;
 
 import it.protectid.model.policy.PolicyModel;
+import it.protectid.pdw.model.Pdw;
+import it.protectid.pdw.repository.JpaPdwRepository;
+import it.protectid.repository.JpaPipRepository;
 import it.protectid.service.PolicyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,9 +44,13 @@ public class ProtectIdFilter extends GenericFilterBean {
 			policyModel = policyService.retrievePpm(inputParams.get(PPM));
 			session.setAttribute(PPM, policyModel);
 			if (PROTECTID_AUTHORIZE.equals(inputParams.get(PROTECTID_AUTHORIZE))) {
+
+
 				//TODO
 				// Qui è dove intercettiamo le chiamate e dove verranno fatti i redirect col DP per la
 				// gestione della Policy
+
+
 				policyService.acceptPpa("", ""); // Capire cosa e come passare
 				//res.sendRedirect("");
 			}

@@ -18,7 +18,7 @@ import java.security.PublicKey;
 @Service
 public class IdentityGenerator {
 	@Autowired
-	private DIRService dirService;
+	private DirRestClient dirRestClient;
 	@Autowired
 	private JpaSidRepository jpaSidRepository;
 	@Autowired
@@ -46,7 +46,7 @@ public class IdentityGenerator {
 		sid.setSig(sig);
 		sid.setAddr(address);
 		sid.setCrtLevel(Sid.CERT_LEVEL_LOW); //TODO
-		dirService.invoke(DIRService.Function.insertSID.name(), JsonConverter.objectToJson(sid));
+		dirRestClient.invoke(DirRestClient.Function.insertSID.name(), JsonConverter.objectToJson(sid), true);
 		jpaSidRepository.create(sid);
 		myPdwManager.create(pid, addrDp, address, sk.toString(), pk.toString(), null);
 		return sid;
