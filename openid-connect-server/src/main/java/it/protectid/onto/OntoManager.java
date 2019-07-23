@@ -1,6 +1,6 @@
 package it.protectid.onto;
 
-import it.eng.protectid.model.policy.PolicyModel;
+import it.protectid.model.policy.PolicyModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.rdf4j.model.Statement;

@@ -2,8 +2,8 @@ package it.protectid.service;
 
 import it.protectid.crypto.AsymmetricCryptography;
 import it.protectid.crypto.GenerateKeys;
-import it.eng.protectid.model.dir.ObjectRequestDir;
-import it.eng.protectid.model.authority.Sid;
+import it.protectid.model.dir.ObjectRequestDir;
+import it.protectid.model.authority.Sid;
 import it.protectid.utils.JsonConverter;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

@@ -1,4 +1,4 @@
-package it.eng.protectid.model.client;
+package it.protectid.model.client;
 
 import org.mitre.oauth2.model.ClientDetailsEntity;
 

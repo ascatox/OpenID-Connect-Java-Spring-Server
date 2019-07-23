@@ -1,8 +1,8 @@
 package it.protectid.service;
 
 import it.protectid.onto.OntoManager;
-import it.eng.protectid.model.policy.PolicyModel;
-import it.eng.protectid.model.policy.Ppm;
+import it.protectid.model.policy.PolicyModel;
+import it.protectid.model.policy.Ppm;
 import it.protectid.repository.JpaPpmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

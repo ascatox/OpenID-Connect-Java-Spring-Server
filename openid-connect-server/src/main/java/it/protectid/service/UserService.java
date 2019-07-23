@@ -1,8 +1,8 @@
 package it.protectid.service;
 
 import org.mitre.openid.connect.model.UserInfo;
-import it.eng.protectid.model.authority.Authorities;
-import it.eng.protectid.model.user.Users;
+import it.protectid.model.authority.Authorities;
+import it.protectid.model.user.Users;
 import it.protectid.repository.JpaAuthoritiesRepository;
 import org.mitre.openid.connect.repository.impl.JpaUserInfoRepository;
 import it.protectid.repository.JpaUsersRepository;

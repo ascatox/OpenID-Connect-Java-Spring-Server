@@ -1,6 +1,6 @@
 package it.protectid.filter;
 
-import it.eng.protectid.model.policy.PolicyModel;
+import it.protectid.model.policy.PolicyModel;
 import it.protectid.service.PolicyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
