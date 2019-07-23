@@ -1,4 +1,4 @@
-package it.protectid.pdw.model;
+package it.eng.protectid.model.pdw;
 
 import javax.persistence.*;
 import java.util.Date;

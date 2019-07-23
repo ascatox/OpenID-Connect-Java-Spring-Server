@@ -1,4 +1,4 @@
-package it.protectid.model.authority;
+package it.eng.protectid.model.authority;
 
 import javax.persistence.*;
 

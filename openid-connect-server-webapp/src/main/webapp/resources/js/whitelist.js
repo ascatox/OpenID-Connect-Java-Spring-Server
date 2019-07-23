@@ -55,7 +55,7 @@ var WhiteListListView = Backbone.View.extend({
 	},
 
 	load: function(callback) {
-		if (this.model.isFetched && this.options.clientList.isFetched && this.options.systemScopeList.isFetched) {
+		if (it.eng.protectid.model.isFetched && this.options.clientList.isFetched && this.options.systemScopeList.isFetched) {
 			callback();
 			return;
 		}
@@ -63,7 +63,7 @@ var WhiteListListView = Backbone.View.extend({
 		$('#loadingbox').sheet('show');
 		$('#loading').html('<span class="label" id="loading-whitelist">' + $.t('whitelist.whitelist') + '</span> ' + '<span class="label" id="loading-clients">' + $.t('common.clients') + '</span> ' + '<span class="label" id="loading-scopes">' + $.t('common.scopes') + '</span> ');
 
-		$.when(this.model.fetchIfNeeded({
+		$.when(it.eng.protectid.model.fetchIfNeeded({
 			success: function(e) {
 				$('#loading-whitelist').addClass('label-success');
 			},
@@ -93,7 +93,7 @@ var WhiteListListView = Backbone.View.extend({
 
 		var _self = this;
 
-		_.each(this.model.models, function(whiteList) {
+		_.each(it.eng.protectid.model.models, function(whiteList) {
 
 			// look up client
 			var client = _self.options.clientList.getByClientId(whiteList.get('clientId'));
@@ -117,7 +117,7 @@ var WhiteListListView = Backbone.View.extend({
 	},
 
 	togglePlaceholder: function() {
-		if (this.model.length > 0) {
+		if (it.eng.protectid.model.length > 0) {
 			$('#whitelist-table', this.el).show();
 			$('#whitelist-table-empty', this.el).hide();
 		} else {
@@ -132,7 +132,7 @@ var WhiteListListView = Backbone.View.extend({
 		$('#loadingbox').sheet('show');
 		$('#loading').html('<span class="label" id="loading-whitelist">' + $.t('whitelist.whitelist') + '</span> ' + '<span class="label" id="loading-clients">' + $.t('common.clients') + '</span> ' + '<span class="label" id="loading-scopes">' + $.t('common.scopes') + '</span> ');
 
-		$.when(this.model.fetch({
+		$.when(it.eng.protectid.model.fetch({
 			success: function(e) {
 				$('#loading-whitelist').addClass('label-success');
 			},
@@ -171,20 +171,20 @@ var WhiteListView = Backbone.View.extend({
 			this.moreInfoTemplate = _.template($('#tmpl-client-more-info-block').html());
 		}
 
-		this.model.bind('change', this.render, this);
+		it.eng.protectid.model.bind('change', this.render, this);
 	},
 
 	render: function(eventName) {
 
 		var json = {
-			whiteList: this.model.toJSON(),
+			whiteList: it.eng.protectid.model.toJSON(),
 			client: this.options.client.toJSON()
 		};
 
 		this.$el.html(this.template(json));
 
 		$('.scope-list', this.el).html(this.scopeTemplate({
-			scopes: this.model.get('allowedScopes'),
+			scopes: it.eng.protectid.model.get('allowedScopes'),
 			systemScopes: this.options.systemScopeList
 		}));
 
@@ -208,7 +208,7 @@ var WhiteListView = Backbone.View.extend({
 
 	editWhitelist: function(e) {
 		e.preventDefault();
-		app.navigate('admin/whitelist/' + this.model.get('id'), {
+		app.navigate('admin/whitelist/' + it.eng.protectid.model.get('id'), {
 			trigger: true
 		});
 	},
@@ -219,7 +219,7 @@ var WhiteListView = Backbone.View.extend({
 		if (confirm($.t('whitelist.confirm'))) {
 			var _self = this;
 
-			this.model.destroy({
+			it.eng.protectid.model.destroy({
 				dataType: false,
 				processData: false,
 				success: function() {
@@ -281,7 +281,7 @@ var WhiteListFormView = Backbone.View.extend({
 
 		if (this.options.client) {
 			// we know what client we're dealing with already
-			if (this.model.isFetched && this.options.client.isFetched) {
+			if (it.eng.protectid.model.isFetched && this.options.client.isFetched) {
 				callback();
 				return;
 			}
@@ -289,7 +289,7 @@ var WhiteListFormView = Backbone.View.extend({
 			$('#loadingbox').sheet('show');
 			$('#loading').html('<span class="label" id="loading-whitelist">' + $.t('whitelist.whitelist') + '</span> ' + '<span class="label" id="loading-clients">' + $.t('common.clients') + '</span> ' + '<span class="label" id="loading-scopes">' + $.t('common.scopes') + '</span> ');
 
-			$.when(this.model.fetchIfNeeded({
+			$.when(it.eng.protectid.model.fetchIfNeeded({
 				success: function(e) {
 					$('#loading-whitelist').addClass('label-success');
 				},
@@ -312,9 +312,9 @@ var WhiteListFormView = Backbone.View.extend({
 		} else {
 			// we need to get the client information from the list
 
-			if (this.model.isFetched && this.options.clientList.isFetched && this.options.systemScopeList.isFetched) {
+			if (it.eng.protectid.model.isFetched && this.options.clientList.isFetched && this.options.systemScopeList.isFetched) {
 
-				var client = this.options.clientList.getByClientId(this.model.get('clientId'));
+				var client = this.options.clientList.getByClientId(it.eng.protectid.model.get('clientId'));
 				this.options.client = client;
 
 				callback();
@@ -326,7 +326,7 @@ var WhiteListFormView = Backbone.View.extend({
 
 			var _self = this;
 
-			$.when(this.model.fetchIfNeeded({
+			$.when(it.eng.protectid.model.fetchIfNeeded({
 				success: function(e) {
 					$('#loading-whitelist').addClass('label-success');
 				},
@@ -343,7 +343,7 @@ var WhiteListFormView = Backbone.View.extend({
 				error: app.errorHandlerView.handleError()
 			})).done(function() {
 
-				var client = _self.options.clientList.getByClientId(_self.model.get('clientId'));
+				var client = _self.options.clientList.getByClientId(it.eng.protectid.model.get('clientId'));
 				_self.options.client = client;
 
 				$('#loadingbox').sheet('hide');
@@ -372,21 +372,21 @@ var WhiteListFormView = Backbone.View.extend({
 		// process allowed scopes
 		var allowedScopes = this.scopeCollection.pluck("item");
 
-		this.model.set({
+		it.eng.protectid.model.set({
 			clientId: this.options.client.get('clientId')
 		}, {
 			silent: true
 		});
 
-		var valid = this.model.set({
+		var valid = it.eng.protectid.model.set({
 			allowedScopes: allowedScopes
 		});
 
 		if (valid) {
 			var _self = this;
-			this.model.save({}, {
+			it.eng.protectid.model.save({}, {
 				success: function() {
-					app.whiteListList.add(_self.model);
+					app.whiteListList.add(it.eng.protectid.model);
 					app.navigate('admin/whitelists', {
 						trigger: true
 					});
@@ -402,7 +402,7 @@ var WhiteListFormView = Backbone.View.extend({
 	cancelWhiteList: function(e) {
 		e.preventDefault();
 		// TODO: figure out where we came from and go back there instead
-		if (this.model.get('id') == null) {
+		if (it.eng.protectid.model.get('id') == null) {
 			// if it's a new whitelist entry, go back to the client listing page
 			app.navigate('admin/clients', {
 				trigger: true
@@ -418,7 +418,7 @@ var WhiteListFormView = Backbone.View.extend({
 	render: function(eventName) {
 
 		var json = {
-			whiteList: this.model.toJSON(),
+			whiteList: it.eng.protectid.model.toJSON(),
 			client: this.options.client.toJSON()
 		};
 
@@ -428,7 +428,7 @@ var WhiteListFormView = Backbone.View.extend({
 
 		var _self = this;
 		// build and bind scopes
-		_.each(this.model.get("allowedScopes"), function(scope) {
+		_.each(it.eng.protectid.model.get("allowedScopes"), function(scope) {
 			_self.scopeCollection.add(new Backbone.Model({
 				item: scope
 			}));

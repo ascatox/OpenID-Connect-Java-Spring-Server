@@ -1,4 +1,4 @@
-package it.protectid.model.user;
+package it.eng.protectid.model.user;
 
 /**
  * @author ascatox

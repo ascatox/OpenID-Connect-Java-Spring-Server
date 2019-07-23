@@ -1,4 +1,4 @@
-package it.protectid.model.policy;
+package it.eng.protectid.model.policy;
 
 import javax.persistence.*;
 

@@ -254,13 +254,13 @@ var ClientView = Backbone.View.extend({
 			this.countTemplate = _.template($('#tmpl-client-count').html());
 		}
 
-		this.model.bind('change', this.render, this);
+		it.eng.protectid.model.bind('change', this.render, this);
 
 	},
 
 	render: function(eventName) {
 
-		var creationDate = this.model.get('createdAt');
+		var creationDate = it.eng.protectid.model.get('createdAt');
 		var displayCreationDate = $.t('client.client-table.unknown');
 		var hoverCreationDate = "";
 		if (creationDate == null || !moment(creationDate).isValid()) {
@@ -277,7 +277,7 @@ var ClientView = Backbone.View.extend({
 		}
 
 		var json = {
-			client: this.model.toJSON(),
+			client: it.eng.protectid.model.toJSON(),
 			whiteList: this.options.whiteList,
 			displayCreationDate: displayCreationDate,
 			hoverCreationDate: hoverCreationDate
@@ -285,12 +285,12 @@ var ClientView = Backbone.View.extend({
 		this.$el.html(this.template(json));
 
 		$('.scope-list', this.el).html(this.scopeTemplate({
-			scopes: this.model.get('scope'),
+			scopes: it.eng.protectid.model.get('scope'),
 			systemScopes: this.options.systemScopeList
 		}));
 
 		$('.client-more-info-block', this.el).html(this.moreInfoTemplate({
-			client: this.model.toJSON()
+			client: it.eng.protectid.model.toJSON()
 		}));
 
 		$('.clientid-full', this.el).hide();
@@ -324,14 +324,14 @@ var ClientView = Backbone.View.extend({
 		$('#modalAlertLabel').html($.t('client.client-form.registration-access-token'));
 
 		var token = new RegistrationTokenModel({
-			clientId: this.model.get('clientId')
+			clientId: it.eng.protectid.model.get('clientId')
 		});
 
 		var _self = this;
 		token.fetch({
 			success: function() {
 				var savedModel = {
-					clientId: _self.model.get('clientId'),
+					clientId: it.eng.protectid.model.get('clientId'),
 					registrationToken: token.get('value')
 				};
 
@@ -371,9 +371,9 @@ var ClientView = Backbone.View.extend({
 
 		// console.log(this.model.get('matches'));
 
-		if (this.model.get('matches')) {
+		if (it.eng.protectid.model.get('matches')) {
 			$('.matched', this.el).show();
-			$('.matched span', this.el).html(this.model.get('matches'));
+			$('.matched span', this.el).html(it.eng.protectid.model.get('matches'));
 		} else {
 			$('.matched', this.el).hide();
 		}
@@ -390,7 +390,7 @@ var ClientView = Backbone.View.extend({
 
 	editClient: function(e) {
 		e.preventDefault();
-		app.navigate('admin/client/' + this.model.id, {
+		app.navigate('admin/client/' + it.eng.protectid.model.id, {
 			trigger: true
 		});
 	},
@@ -399,7 +399,7 @@ var ClientView = Backbone.View.extend({
 		e.preventDefault();
 		if (this.options.whiteList == null) {
 			// create a new one
-			app.navigate('admin/whitelist/new/' + this.model.get('id'), {
+			app.navigate('admin/whitelist/new/' + it.eng.protectid.model.get('id'), {
 				trigger: true
 			});
 		} else {
@@ -416,7 +416,7 @@ var ClientView = Backbone.View.extend({
 		if (confirm($.t('client.client-table.confirm'))) {
 			var _self = this;
 
-			this.model.destroy({
+			it.eng.protectid.model.destroy({
 				dataType: false,
 				processData: false,
 				success: function() {
@@ -475,11 +475,11 @@ var ClientListView = Backbone.View.extend({
 
 	initialize: function(options) {
 		this.options = options;
-		this.filteredModel = this.model;
+		this.filteredModel = it.eng.protectid.model;
 	},
 
 	load: function(callback) {
-		if (this.model.isFetched && this.options.whiteListList.isFetched && this.options.systemScopeList.isFetched) {
+		if (it.eng.protectid.model.isFetched && this.options.whiteListList.isFetched && this.options.systemScopeList.isFetched) {
 			callback();
 			return;
 		}
@@ -487,7 +487,7 @@ var ClientListView = Backbone.View.extend({
 		$('#loadingbox').sheet('show');
 		$('#loading').html('<span class="label" id="loading-clients">' + $.t("common.clients") + '</span> ' + '<span class="label" id="loading-whitelist">' + $.t("whitelist.whitelist") + '</span> ' + '<span class="label" id="loading-scopes">' + $.t("common.scopes") + '</span> ');
 
-		$.when(this.model.fetchIfNeeded({
+		$.when(it.eng.protectid.model.fetchIfNeeded({
 			success: function(e) {
 				$('#loading-clients').addClass('label-success');
 			},
@@ -599,7 +599,7 @@ var ClientListView = Backbone.View.extend({
 			$('#client-table-empty', this.el).hide();
 			$('#client-table-search-empty', this.el).hide();
 		} else {
-			if (this.model.length > 0) {
+			if (it.eng.protectid.model.length > 0) {
 				// there's stuff in the model but it's been filtered out
 				$('#client-table', this.el).hide();
 				$('#client-table-empty', this.el).hide();
@@ -667,7 +667,7 @@ var ClientListView = Backbone.View.extend({
 		$('#loading').html('<span class="label" id="loading-clients">' + $.t("common.clients") + '</span> ' + '<span class="label" id="loading-whitelist">' + $.t("whitelist.whitelist") + '</span> ' + '<span class="label" id="loading-scopes">' + $.t("common.scopes") + '</span> ');
 
 		var _self = this;
-		$.when(this.model.fetch({
+		$.when(it.eng.protectid.model.fetch({
 			success: function(e) {
 				$('#loading-clients').addClass('label-success');
 			},
@@ -691,7 +691,7 @@ var ClientListView = Backbone.View.extend({
 	searchTable: function(e) {
 		var term = $('.search-query', this.el).val();
 
-		this.filteredModel = new ClientCollection(this.model.filter(function(client) {
+		this.filteredModel = new ClientCollection(it.eng.protectid.model.filter(function(client) {
 			return client.matches(term);
 		}));
 
@@ -767,7 +767,7 @@ var ClientFormView = Backbone.View.extend({
 	},
 
 	load: function(callback) {
-		if (this.model.isFetched && this.options.systemScopeList.isFetched) {
+		if (it.eng.protectid.model.isFetched && this.options.systemScopeList.isFetched) {
 			callback();
 			return;
 		}
@@ -780,7 +780,7 @@ var ClientFormView = Backbone.View.extend({
 				$('#loading-scopes').addClass('label-success');
 			},
 			error: app.errorHandlerView.handleError()
-		}), this.model.fetchIfNeeded({
+		}), it.eng.protectid.model.fetchIfNeeded({
 			success: function(e) {
 				$('#loading-clients').addClass('label-success');
 			},
@@ -1007,7 +1007,7 @@ var ClientFormView = Backbone.View.extend({
 				clientSecret = $('#clientSecret input').val();
 
 				// if it's not the same as before, offer to display it
-				if (clientSecret != this.model.get('clientSecret')) {
+				if (clientSecret != it.eng.protectid.model.get('clientSecret')) {
 					secretChanged = true;
 				}
 			} else {
@@ -1146,14 +1146,14 @@ var ClientFormView = Backbone.View.extend({
 		}
 
 		var _self = this;
-		this.model.save(attrs, {
+		it.eng.protectid.model.save(attrs, {
 			success: function() {
 
 				$('#modalAlertLabel').html($.t('client.client-form.saved.saved'));
 
 				var savedModel = {
-					clientId: _self.model.get('clientId'),
-					clientSecret: _self.model.get('clientSecret'),
+					clientId: it.eng.protectid.model.get('clientId'),
+					clientSecret: it.eng.protectid.model.get('clientSecret'),
 					secretChanged: secretChanged
 				};
 
@@ -1176,7 +1176,7 @@ var ClientFormView = Backbone.View.extend({
 					'show': true
 				});
 
-				app.clientList.add(_self.model);
+				app.clientList.add(it.eng.protectid.model);
 				app.navigate('admin/clients', {
 					trigger: true
 				});
@@ -1192,7 +1192,7 @@ var ClientFormView = Backbone.View.extend({
 	render: function(eventName) {
 
 		var data = {
-			client: this.model.toJSON(),
+			client: it.eng.protectid.model.toJSON(),
 			heartMode: heartMode
 		};
 		$(this.el).html(this.template(data));
@@ -1203,7 +1203,7 @@ var ClientFormView = Backbone.View.extend({
 		this.listWidgetViews = [];
 
 		// build and bind registered redirect URI collection and view
-		_.each(this.model.get("redirectUris"), function(redirectUri) {
+		_.each(it.eng.protectid.model.get("redirectUris"), function(redirectUri) {
 			_self.redirectUrisCollection.add(new URIModel({
 				item: redirectUri
 			}));
@@ -1219,7 +1219,7 @@ var ClientFormView = Backbone.View.extend({
 		this.listWidgetViews.push(redirUriView);
 
 		// build and bind scopes
-		_.each(this.model.get("scope"), function(scope) {
+		_.each(it.eng.protectid.model.get("scope"), function(scope) {
 			_self.scopeCollection.add(new Backbone.Model({
 				item: scope
 			}));
@@ -1235,7 +1235,7 @@ var ClientFormView = Backbone.View.extend({
 		this.listWidgetViews.push(scopeView);
 
 		// build and bind contacts
-		_.each(this.model.get('contacts'), function(contact) {
+		_.each(it.eng.protectid.model.get('contacts'), function(contact) {
 			_self.contactsCollection.add(new Backbone.Model({
 				item: contact
 			}));
@@ -1250,7 +1250,7 @@ var ClientFormView = Backbone.View.extend({
 		this.listWidgetViews.push(contactsView);
 
 		// build and bind post-logout redirect URIs
-		_.each(this.model.get('postLogoutRedirectUris'), function(postLogoutRedirectUri) {
+		_.each(it.eng.protectid.model.get('postLogoutRedirectUris'), function(postLogoutRedirectUri) {
 			_self.postLogoutRedirectUrisCollection.add(new URIModel({
 				item: postLogoutRedirectUri
 			}));
@@ -1266,7 +1266,7 @@ var ClientFormView = Backbone.View.extend({
 		this.listWidgetViews.push(postLogoutRedirectUrisView);
 
 		// build and bind claims redirect URIs
-		_.each(this.model.get('claimsRedirectUris'), function(claimsRedirectUri) {
+		_.each(it.eng.protectid.model.get('claimsRedirectUris'), function(claimsRedirectUri) {
 			_self.claimsRedirectUrisCollection.add(new URIModel({
 				item: claimsRedirectUri
 			}));
@@ -1282,7 +1282,7 @@ var ClientFormView = Backbone.View.extend({
 		this.listWidgetViews.push(claimsRedirectUrisView);
 
 		// build and bind request URIs
-		_.each(this.model.get('requestUris'), function(requestUri) {
+		_.each(it.eng.protectid.model.get('requestUris'), function(requestUri) {
 			_self.requestUrisCollection.add(new URIModel({
 				item: requestUri
 			}));
@@ -1298,7 +1298,7 @@ var ClientFormView = Backbone.View.extend({
 		this.listWidgetViews.push(requestUriView);
 
 		// build and bind default ACR values
-		_.each(this.model.get('defaultACRvalues'), function(defaultACRvalue) {
+		_.each(it.eng.protectid.model.get('defaultACRvalues'), function(defaultACRvalue) {
 			_self.defaultACRvaluesCollection.add(new Backbone.Model({
 				item: defaultACRvalue
 			}));
@@ -1316,16 +1316,16 @@ var ClientFormView = Backbone.View.extend({
 		// build and bind
 
 		// set up token fields
-		if (!this.model.get("allowRefresh")) {
+		if (!it.eng.protectid.model.get("allowRefresh")) {
 			$("#refreshTokenValidityTime", this.$el).hide();
 		}
 
-		if (this.model.get("accessTokenValiditySeconds") == null) {
+		if (it.eng.protectid.model.get("accessTokenValiditySeconds") == null) {
 			$("#access-token-timeout-time", this.$el).prop('disabled', true);
 			$("#access-token-timeout-unit", this.$el).prop('disabled', true);
 		}
 
-		if (this.model.get("refreshTokenValiditySeconds") == null) {
+		if (it.eng.protectid.model.get("refreshTokenValiditySeconds") == null) {
 			$("#refresh-token-timeout-time", this.$el).prop('disabled', true);
 			$("#refresh-token-timeout-unit", this.$el).prop('disabled', true);
 		}

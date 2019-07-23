@@ -1,7 +1,7 @@
 package it.protectid.repository;
 
-import it.protectid.model.authority.Authorities;
-import it.protectid.model.user.Users;
+import it.eng.protectid.model.authority.Authorities;
+import it.eng.protectid.model.user.Users;
 import org.mitre.openid.connect.model.UserInfo;
 import org.mitre.util.jpa.JpaUtil;
 import org.springframework.stereotype.Repository;

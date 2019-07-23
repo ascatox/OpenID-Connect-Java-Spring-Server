@@ -1,4 +1,4 @@
-package it.protectid.model.dir;
+package it.eng.protectid.model.dir;
 
 public class ObjectRequestDir {
 

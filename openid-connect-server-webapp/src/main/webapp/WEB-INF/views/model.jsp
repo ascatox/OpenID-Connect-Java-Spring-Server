@@ -1,4 +1,4 @@
-<%@page import="it.protectid.model.policy.PolicyModel" %>
+<%@page import="it.eng.protectid.model.policy.PolicyModel" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.mitre.openid.connect.request.ConnectRequestParameters" %>
 <%@ page import="java.util.Set" %>

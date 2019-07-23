@@ -22,8 +22,6 @@ package org.mitre.openid.connect.filter;
 
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
-import it.protectid.model.policy.PolicyModel;
-import it.protectid.service.PolicyService;
 import org.apache.http.client.utils.URIBuilder;
 import org.mitre.oauth2.model.ClientDetailsEntity;
 import org.mitre.oauth2.service.ClientDetailsEntityService;

@@ -2,7 +2,7 @@ package it.protectid.service;
 
 import it.protectid.crypto.AsymmetricCryptography;
 import it.protectid.crypto.GenerateKeys;
-import it.protectid.model.authority.Sid;
+import it.eng.protectid.model.authority.Sid;
 import it.protectid.pdw.MyPdwManager;
 import it.protectid.repository.JpaSidRepository;
 import it.protectid.utils.JsonConverter;
