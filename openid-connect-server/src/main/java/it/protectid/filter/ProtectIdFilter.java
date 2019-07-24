@@ -50,7 +50,6 @@ public class ProtectIdFilter extends GenericFilterBean {
 				// Qui è dove intercettiamo le chiamate e dove verranno fatti i redirect col DP per la
 				// gestione della Policy
 
-
 				policyService.acceptPpa("", ""); // Capire cosa e come passare
 				//res.sendRedirect("");
 			}
@@ -60,7 +59,6 @@ public class ProtectIdFilter extends GenericFilterBean {
 			chain.doFilter(request, response);
 		}
 	}
-
 
 	private Map<String, String> createRequestMap(Map<String, String[]> parameterMap) {
 		Map<String, String> requestMap = new HashMap<>();

@@ -35,7 +35,6 @@ public class OntoManager {
 		return doCreateModelFromOntology(model);
 	}
 
-
 	public static PolicyModel doCreateModelFromOntology(InputStream inputStream) throws Exception {
 		//TODO
 		// Questa parte va interamente rivista sulla base del nuovo modello sulla quale sta lavorando
