@@ -260,7 +260,7 @@ var DynRegEditView = Backbone.View.extend({
 		if (confirm($.t('client.client-table.confirm'))) {
 			var self = this;
 
-			this.model.destroy({
+			it.eng.protectid.model.destroy({
 				dataType: false,
 				processData: false,
 				success: function() {
@@ -502,7 +502,7 @@ var DynRegEditView = Backbone.View.extend({
 		}
 
 		var _self = this;
-		this.model.save(attrs, {
+		it.eng.protectid.model.save(attrs, {
 			success: function() {
 				// switch to an "edit" view
 				app.navigate('dev/dynreg/edit', {
@@ -511,24 +511,24 @@ var DynRegEditView = Backbone.View.extend({
 				_self.remove();
 
 				var userInfo = getUserInfo();
-				var contacts = _self.model.get("contacts");
+				var contacts = it.eng.protectid.model.get("contacts");
 				if (userInfo != null && userInfo.email != null && !_.contains(contacts, userInfo.email)) {
 					contacts.push(userInfo.email);
 				}
-				_self.model.set({
+				it.eng.protectid.model.set({
 					contacts: contacts
 				}, {
 					silent: true
 				});
 
-				if (_self.model.get("jwks")) {
-					_self.model.set({
+				if (it.eng.protectid.model.get("jwks")) {
+					it.eng.protectid.model.set({
 						jwksType: "VAL"
 					}, {
 						silent: true
 					});
 				} else {
-					_self.model.set({
+					it.eng.protectid.model.set({
 						jwksType: "URI"
 					}, {
 						silent: true
@@ -536,7 +536,7 @@ var DynRegEditView = Backbone.View.extend({
 				}
 
 				var view = new DynRegEditView({
-					model: _self.model,
+					model: it.eng.protectid.model,
 					systemScopeList: _self.options.systemScopeList
 				});
 
@@ -556,7 +556,7 @@ var DynRegEditView = Backbone.View.extend({
 
 	render: function() {
 		var data = {
-			client: this.model.toJSON(),
+			client: it.eng.protectid.model.toJSON(),
 			userInfo: getUserInfo(),
 			heartMode: heartMode
 		};
@@ -567,7 +567,7 @@ var DynRegEditView = Backbone.View.extend({
 		var _self = this;
 
 		// build and bind registered redirect URI collection and view
-		_.each(this.model.get("redirect_uris"), function(redirectUri) {
+		_.each(it.eng.protectid.model.get("redirect_uris"), function(redirectUri) {
 			_self.redirectUrisCollection.add(new URIModel({
 				item: redirectUri
 			}));
@@ -583,7 +583,7 @@ var DynRegEditView = Backbone.View.extend({
 		this.listWidgetViews.push(redirectUriView);
 
 		// build and bind scopes
-		var scopes = this.model.get("scope");
+		var scopes = it.eng.protectid.model.get("scope");
 		var scopeSet = scopes ? scopes.split(" ") : [];
 		_.each(scopeSet, function(scope) {
 			_self.scopeCollection.add(new Backbone.Model({
@@ -601,7 +601,7 @@ var DynRegEditView = Backbone.View.extend({
 		this.listWidgetViews.push(scopeView);
 
 		// build and bind contacts
-		_.each(this.model.get('contacts'), function(contact) {
+		_.each(it.eng.protectid.model.get('contacts'), function(contact) {
 			_self.contactsCollection.add(new Backbone.Model({
 				item: contact
 			}));
@@ -616,7 +616,7 @@ var DynRegEditView = Backbone.View.extend({
 		this.listWidgetViews.push(contactView);
 
 		// build and bind post-logout redirect URIs
-		_.each(this.model.get('post_logout_redirect_uris'), function(postLogoutRedirectUri) {
+		_.each(it.eng.protectid.model.get('post_logout_redirect_uris'), function(postLogoutRedirectUri) {
 			_self.postLogoutRedirectUrisCollection.add(new URIModel({
 				item: postLogoutRedirectUri
 			}));
@@ -632,7 +632,7 @@ var DynRegEditView = Backbone.View.extend({
 		this.listWidgetViews.push(postLogoutRedirectUrisView);
 
 		// build and bind claims redirect URIs
-		_.each(this.model.get('claimsRedirectUris'), function(claimsRedirectUri) {
+		_.each(it.eng.protectid.model.get('claimsRedirectUris'), function(claimsRedirectUri) {
 			_self.claimsRedirectUrisCollection.add(new URIModel({
 				item: claimsRedirectUri
 			}));
@@ -648,7 +648,7 @@ var DynRegEditView = Backbone.View.extend({
 		this.listWidgetViews.push(claimsRedirectUrisView);
 
 		// build and bind request URIs
-		_.each(this.model.get('request_uris'), function(requestUri) {
+		_.each(it.eng.protectid.model.get('request_uris'), function(requestUri) {
 			_self.requestUrisCollection.add(new URIModel({
 				item: requestUri
 			}));
@@ -664,7 +664,7 @@ var DynRegEditView = Backbone.View.extend({
 		this.listWidgetViews.push(requestUriView);
 
 		// build and bind default ACR values
-		_.each(this.model.get('default_acr_values'), function(defaultAcrValue) {
+		_.each(it.eng.protectid.model.get('default_acr_values'), function(defaultAcrValue) {
 			_self.defaultAcrValuesCollection.add(new Backbone.Model({
 				item: defaultAcrValue
 			}));

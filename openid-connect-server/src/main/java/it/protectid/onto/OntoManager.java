@@ -1,4 +1,4 @@
-package it.protectid.model.onto;
+package it.protectid.onto;
 
 import it.protectid.model.policy.PolicyModel;
 import org.apache.commons.io.FileUtils;

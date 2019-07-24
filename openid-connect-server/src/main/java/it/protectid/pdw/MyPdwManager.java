@@ -2,7 +2,7 @@ package it.protectid.pdw;
 
 import it.protectid.model.authority.Sid;
 import it.protectid.model.policy.Ppa;
-import it.protectid.pdw.model.Pdw;
+import it.protectid.model.pdw.Pdw;
 import it.protectid.pdw.repository.JpaPdwRepository;
 import it.protectid.repository.JpaPipRepository;
 import it.protectid.repository.JpaSidRepository;

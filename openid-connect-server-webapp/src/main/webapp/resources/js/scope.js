@@ -82,7 +82,7 @@ var SystemScopeView = Backbone.View.extend({
 			this.template = _.template($('#tmpl-system-scope').html());
 		}
 
-		this.model.bind('change', this.render, this);
+		it.eng.protectid.model.bind('change', this.render, this);
 
 	},
 
@@ -93,13 +93,13 @@ var SystemScopeView = Backbone.View.extend({
 
 	editScope: function(e) {
 		e.preventDefault();
-		app.navigate('admin/scope/' + this.model.id, {
+		app.navigate('admin/scope/' + it.eng.protectid.model.id, {
 			trigger: true
 		});
 	},
 
 	render: function(eventName) {
-		this.$el.html(this.template(this.model.toJSON()));
+		this.$el.html(this.template(it.eng.protectid.model.toJSON()));
 
 		$('.restricted', this.el).tooltip({
 			title: $.t('scope.system-scope-table.tooltip-restricted')
@@ -118,7 +118,7 @@ var SystemScopeView = Backbone.View.extend({
 		if (confirm($.t("scope.system-scope-table.confirm"))) {
 			var _self = this;
 
-			this.model.destroy({
+			it.eng.protectid.model.destroy({
 				dataType: false,
 				processData: false,
 				success: function() {
@@ -153,7 +153,7 @@ var SystemScopeListView = Backbone.View.extend({
 	},
 
 	load: function(callback) {
-		if (this.model.isFetched) {
+		if (it.eng.protectid.model.isFetched) {
 			callback();
 			return;
 		}
@@ -161,7 +161,7 @@ var SystemScopeListView = Backbone.View.extend({
 		$('#loadingbox').sheet('show');
 		$('#loading').html('<span class="label" id="loading-scopes">' + $.t('common.scopes') + '</span> ');
 
-		$.when(this.model.fetchIfNeeded({
+		$.when(it.eng.protectid.model.fetchIfNeeded({
 			success: function(e) {
 				$('#loading-scopes').addClass('label-success');
 			},
@@ -189,7 +189,7 @@ var SystemScopeListView = Backbone.View.extend({
 		$('#loadingbox').sheet('show');
 		$('#loading').html('<span class="label" id="loading-scopes">' + $.t('common.scopes') + '</span> ');
 
-		$.when(this.model.fetch({
+		$.when(it.eng.protectid.model.fetch({
 			success: function(e) {
 				$('#loading-scopes').addClass('label-success');
 			},
@@ -201,7 +201,7 @@ var SystemScopeListView = Backbone.View.extend({
 	},
 
 	togglePlaceholder: function() {
-		if (this.model.length > 0) {
+		if (it.eng.protectid.model.length > 0) {
 			$('#scope-table', this.el).show();
 			$('#scope-table-empty', this.el).hide();
 		} else {
@@ -217,7 +217,7 @@ var SystemScopeListView = Backbone.View.extend({
 
 		var _self = this;
 
-		_.each(this.model.models, function(scope) {
+		_.each(it.eng.protectid.model.models, function(scope) {
 			var view = new SystemScopeView({
 				model: scope
 			});
@@ -274,7 +274,7 @@ var SystemScopeFormView = Backbone.View
 			},
 
 			load: function(callback) {
-				if (this.model.isFetched) {
+				if (it.eng.protectid.model.isFetched) {
 					callback();
 					return;
 				}
@@ -282,7 +282,7 @@ var SystemScopeFormView = Backbone.View
 				$('#loadingbox').sheet('show');
 				$('#loading').html('<span class="label" id="loading-scopes">' + $.t("common.scopes") + '</span> ');
 
-				$.when(this.model.fetchIfNeeded({
+				$.when(it.eng.protectid.model.fetchIfNeeded({
 					success: function(e) {
 						$('#loading-scopes').addClass('label-success');
 					},
@@ -304,7 +304,7 @@ var SystemScopeFormView = Backbone.View
 					return false;
 				}
 
-				var valid = this.model.set({
+				var valid = it.eng.protectid.model.set({
 					value: value,
 					description: $('#description textarea').val(),
 					icon: $('#iconDisplay input').val(),
@@ -315,9 +315,9 @@ var SystemScopeFormView = Backbone.View
 				if (valid) {
 
 					var _self = this;
-					this.model.save({}, {
+					it.eng.protectid.model.save({}, {
 						success: function() {
-							app.systemScopeList.add(_self.model);
+							app.systemScopeList.add(it.eng.protectid.model);
 							app.navigate('admin/scope', {
 								trigger: true
 							});
@@ -346,7 +346,7 @@ var SystemScopeFormView = Backbone.View
 			},
 
 			render: function(eventName) {
-				this.$el.html(this.template(this.model.toJSON()));
+				this.$el.html(this.template(it.eng.protectid.model.toJSON()));
 
 				_.each(this.bootstrapIcons, function(items) {
 					$("#iconSelector .modal-body", this.el).append(this.iconTemplate({

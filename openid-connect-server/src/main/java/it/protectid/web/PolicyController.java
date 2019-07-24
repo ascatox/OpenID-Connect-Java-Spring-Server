@@ -1,8 +1,8 @@
 //package it.protectid.web;
 //
 //import it.protectid.service.DIRService;
-//import it.protectid.model.client.Dp;
-//import it.protectid.model.authority.Sid;
+//import Dp;
+//import Sid;
 //import it.protectid.pdw.MyPdwManager;
 //import it.protectid.repository.JpaPpmRepository;
 //import it.protectid.utils.JsonConverter;

@@ -1,6 +1,6 @@
 package it.protectid.pdw.repository;
 
-import it.protectid.pdw.model.Pdw;
+import it.protectid.model.pdw.Pdw;
 import org.mitre.util.jpa.JpaUtil;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,6 @@
 package it.protectid.service;
 
-import it.protectid.model.onto.OntoManager;
+import it.protectid.onto.OntoManager;
 import it.protectid.model.policy.PolicyModel;
 import it.protectid.model.policy.Ppm;
 import it.protectid.repository.JpaPpmRepository;

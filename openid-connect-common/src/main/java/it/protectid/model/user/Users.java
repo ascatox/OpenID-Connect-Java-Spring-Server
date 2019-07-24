@@ -1,7 +1,5 @@
 package it.protectid.model.user;
 
-import it.protectid.model.authority.Authorities;
-
 import javax.persistence.*;
 
 /**
