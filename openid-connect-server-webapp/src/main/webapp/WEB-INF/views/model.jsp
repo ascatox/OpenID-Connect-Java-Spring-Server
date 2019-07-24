@@ -11,10 +11,8 @@
 
 <%
     PolicyModel policyModel = (PolicyModel) session.getAttribute(ConnectRequestParameters.PPM);
-    List<PolicyModel.Attribute> attributes = policyModel.getAttributes();
-    Set<String> attributeKeys = policyModel.getAttributeKeys();
+    List<PolicyModel.Attribute> attributes = policyModel.getPersonalData();
 %>
-
 
 <fieldset class="well">
     <legend>
@@ -22,10 +20,10 @@
     </legend>
     <table class="table">
         <%
-            for (String attribute : attributeKeys) {
+            for (PolicyModel.Attribute attribute : attributes) {
         %>
         <tr>
-             <td><i class="icon-apple"></i></i><%=attribute%></td>
+             <td><i class="icon-apple"></i></i><%=attribute.getName()%></td>
         </tr>
         <% } %>
     </table>

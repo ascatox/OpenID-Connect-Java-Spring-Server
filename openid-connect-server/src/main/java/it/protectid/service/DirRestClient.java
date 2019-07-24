@@ -56,9 +56,7 @@ public class DirRestClient {
 
 	}
 
-
 	private boolean checkSign(Sid sid) {
-
 		try {
 			if (sid.getId() != null && sid.getPip() != null) {
 				AsymmetricCryptography ac = new AsymmetricCryptography();

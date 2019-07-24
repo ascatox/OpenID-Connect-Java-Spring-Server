@@ -1,0 +1,134 @@
+{
+    "personalData": [
+        {
+            "name": "birthCity",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#birthCity",
+            "id": "W0H0u",
+            "description": "City of Birth",
+            "personality": 3,
+            "transfer": false,
+            "finality": "Service Use",
+            "mandatory": true
+        },
+        {
+            "name": "birthDate",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#birthDate",
+            "id": "YTlUE",
+            "description": "Date of Birth",
+            "personality": 3,
+            "transfer": false,
+            "finality": "Service Use",
+            "mandatory": true
+        },
+        {
+            "name": "name",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#name",
+            "id": "QweTp",
+            "description": "Name",
+            "personality": 2,
+            "transfer": true,
+            "finality": "Service Use",
+            "mandatory": true
+        },
+        {
+            "name": "emailAddress",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#emailAddress",
+            "id": "LT7hd",
+            "description": "Email Address",
+            "personality": 3,
+            "transfer": true,
+            "finality": "Service Use",
+            "mandatory": true
+        },
+        {
+            "name": "phoneNumber",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#phoneNumber",
+            "id": "VjP1D",
+            "description": "Mobile Phone Number",
+            "personality": 3,
+            "transfer": false,
+            "finality": "Service Use",
+            "mandatory": true
+        },
+        {
+            "name": "state",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#state",
+            "id": "NdOd0",
+            "description": "State",
+            "personality": 0,
+            "transfer": false,
+            "finality": "Service Use",
+            "mandatory": true
+        },
+        {
+            "name": "language",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#language",
+            "id": "xiSwo",
+            "description": "language",
+            "personality": 0,
+            "transfer": false,
+            "finality": "Service Use",
+            "mandatory": false
+        },
+        {
+            "name": "name",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#name",
+            "id": "xunTL",
+            "description": "Name",
+            "personality": 2,
+            "transfer": true,
+            "finality": "Electronic Invoicing",
+            "mandatory": true
+        },
+        {
+            "name": "fiscalCode",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#fiscalCode",
+            "id": "ywQkK",
+            "description": "Fiscal Code",
+            "personality": 3,
+            "transfer": true,
+            "finality": "Electronic Invoicing",
+            "mandatory": true
+        },
+        {
+            "name": "emailAddress",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#emailAddress",
+            "id": "hZuP7",
+            "description": "Email Address",
+            "personality": 3,
+            "transfer": true,
+            "finality": "Electronic Invoicing",
+            "mandatory": true
+        },
+        {
+            "name": "phoneNumber",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#phoneNumber",
+            "id": "VY3gD",
+            "description": "Mobile Phone Number",
+            "personality": 3,
+            "transfer": false,
+            "finality": "Electronic Invoicing",
+            "mandatory": true
+        },
+        {
+            "name": "emailAddress",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#emailAddress",
+            "id": "OhR4P",
+            "description": "Email Address",
+            "personality": 3,
+            "transfer": true,
+            "finality": "Marketing",
+            "mandatory": false
+        },
+        {
+            "name": "postalAddress",
+            "uri": "http://www.protectid.it/ontologies/pd-onto#postalAddress",
+            "id": "2StrM",
+            "description": "Postal Address",
+            "personality": 1,
+            "transfer": true,
+            "finality": "Marketing",
+            "mandatory": false
+        }
+    ]
+}
