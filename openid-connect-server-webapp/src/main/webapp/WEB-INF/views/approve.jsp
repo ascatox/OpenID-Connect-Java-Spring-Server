@@ -39,7 +39,7 @@
 			action="${ config.issuer }${ config.issuer.endsWith('/') ? '' : '/' }authorize" method="post">
 
 			<div class="row">
-				<div class="span5 offset1 well-small" style="text-align: left">
+				<div class="span10 offset1 well-small" style="text-align: left">
 					<c:if test="${ client.dynamicallyRegistered }">
 						<c:choose>
 							<c:when test="${ gras }">
@@ -165,82 +165,82 @@
 					</c:if>
 
 				</div>
-				<div class="span4">
-					<fieldset style="text-align: left" class="well">
-						<legend style="margin-bottom: 0;"><spring:message code="approve.access_to"/>:</legend>
+<%--				<div class="span4">--%>
+<%--					<fieldset style="text-align: left" class="well">--%>
+<%--						<legend style="margin-bottom: 0;"><spring:message code="approve.access_to"/>:</legend>--%>
 
-						<c:if test="${ empty client.scope }">
-								<div class="alert alert-block alert-error">
-									<h4>
-										<i class="icon-info-sign"></i> <spring:message code="approve.warning"/>:
-									</h4>
-									<p>
-									   <spring:message code="approve.no_scopes"/>
-									</p>
-								</div>
-						</c:if>
+<%--						<c:if test="${ empty client.scope }">--%>
+<%--								<div class="alert alert-block alert-error">--%>
+<%--									<h4>--%>
+<%--										<i class="icon-info-sign"></i> <spring:message code="approve.warning"/>:--%>
+<%--									</h4>--%>
+<%--									<p>--%>
+<%--									   <spring:message code="approve.no_scopes"/>--%>
+<%--									</p>--%>
+<%--								</div>--%>
+<%--						</c:if>--%>
 
-						<c:forEach var="scope" items="${ scopes }">
+<%--						<c:forEach var="scope" items="${ scopes }">--%>
 
-							<label for="scope_${ fn:escapeXml(scope.value) }" class="checkbox"> 
-								<input type="checkbox" name="scope_${ fn:escapeXml(scope.value) }" id="scope_${ fn:escapeXml(scope.value) }" value="${ fn:escapeXml(scope.value) }" checked="checked"> 
-								<c:if test="${ not empty scope.icon }">
-									<i class="icon-${ fn:escapeXml(scope.icon) }"></i>
-								</c:if> 
-								<c:choose>
-									<c:when test="${ not empty scope.description }">
-										<c:out value="${ scope.description }" />
-									</c:when>
-									<c:otherwise>
-										<c:out value="${ scope.value }" />
-									</c:otherwise>
-								</c:choose>
-								
-								<c:if test="${ not empty claims[scope.value] }">
-									<span class="claim-tooltip" data-toggle="popover"
-										data-html="true"
-										data-placement="right"
-										data-trigger="hover"
-										data-title="These values will be sent:"
-										data-content="<div style=&quot;text-align: left;&quot;>
-											<ul>
-											<c:forEach var="claim" items="${ claims[scope.value] }">
-												<li>
-												<b><c:out value="${ claim.key }" /></b>: 
-												<c:out value="${ claim.value }" />
-												</li>
-											</c:forEach>
-											</ul>
-											</div>
-										"
-									>
-										<i class="icon-question-sign"></i>
-										
-									</span>
-								</c:if>
-								
-							</label>
+<%--							<label for="scope_${ fn:escapeXml(scope.value) }" class="checkbox"> --%>
+<%--								<input type="checkbox" name="scope_${ fn:escapeXml(scope.value) }" id="scope_${ fn:escapeXml(scope.value) }" value="${ fn:escapeXml(scope.value) }" checked="checked"> --%>
+<%--								<c:if test="${ not empty scope.icon }">--%>
+<%--									<i class="icon-${ fn:escapeXml(scope.icon) }"></i>--%>
+<%--								</c:if> --%>
+<%--								<c:choose>--%>
+<%--									<c:when test="${ not empty scope.description }">--%>
+<%--										<c:out value="${ scope.description }" />--%>
+<%--									</c:when>--%>
+<%--									<c:otherwise>--%>
+<%--										<c:out value="${ scope.value }" />--%>
+<%--									</c:otherwise>--%>
+<%--								</c:choose>--%>
+<%--								--%>
+<%--								<c:if test="${ not empty claims[scope.value] }">--%>
+<%--									<span class="claim-tooltip" data-toggle="popover"--%>
+<%--										data-html="true"--%>
+<%--										data-placement="right"--%>
+<%--										data-trigger="hover"--%>
+<%--										data-title="These values will be sent:"--%>
+<%--										data-content="<div style=&quot;text-align: left;&quot;>--%>
+<%--											<ul>--%>
+<%--											<c:forEach var="claim" items="${ claims[scope.value] }">--%>
+<%--												<li>--%>
+<%--												<b><c:out value="${ claim.key }" /></b>: --%>
+<%--												<c:out value="${ claim.value }" />--%>
+<%--												</li>--%>
+<%--											</c:forEach>--%>
+<%--											</ul>--%>
+<%--											</div>--%>
+<%--										"--%>
+<%--									>--%>
+<%--										<i class="icon-question-sign"></i>--%>
+<%--										--%>
+<%--									</span>--%>
+<%--								</c:if>--%>
+<%--								--%>
+<%--							</label>--%>
 
-						</c:forEach>
+<%--						</c:forEach>--%>
 
-					</fieldset>
+<%--					</fieldset>--%>
 
-					<fieldset style="text-align: left" class="well">
-						<legend style="margin-bottom: 0;"><spring:message code="approve.remember.title"/>:</legend>
-						<label for="remember-forever" class="radio"> 
-						<input type="radio" name="remember" id="remember-forever" value="until-revoked"  ${ !consent ? 'checked="checked"' : '' }> 
-							<spring:message code="approve.remember.until_revoke"/>
-						</label> 
-						<label for="remember-hour" class="radio"> 
-						<input type="radio" name="remember" id="remember-hour" value="one-hour">
-							<spring:message code="approve.remember.one_hour"/>
-						</label> 
-						<label for="remember-not" class="radio"> 
-						<input type="radio" name="remember" id="remember-not" value="none" ${ consent ? 'checked="checked"' : '' }>
-							<spring:message code="approve.remember.next_time"/>
-						</label>
-					</fieldset>
-				</div>
+<%--					<fieldset style="text-align: left" class="well">--%>
+<%--						<legend style="margin-bottom: 0;"><spring:message code="approve.remember.title"/>:</legend>--%>
+<%--						<label for="remember-forever" class="radio"> --%>
+<%--						<input type="radio" name="remember" id="remember-forever" value="until-revoked"  ${ !consent ? 'checked="checked"' : '' }> --%>
+<%--							<spring:message code="approve.remember.until_revoke"/>--%>
+<%--						</label> --%>
+<%--						<label for="remember-hour" class="radio"> --%>
+<%--						<input type="radio" name="remember" id="remember-hour" value="one-hour">--%>
+<%--							<spring:message code="approve.remember.one_hour"/>--%>
+<%--						</label> --%>
+<%--						<label for="remember-not" class="radio"> --%>
+<%--						<input type="radio" name="remember" id="remember-not" value="none" ${ consent ? 'checked="checked"' : '' }>--%>
+<%--							<spring:message code="approve.remember.next_time"/>--%>
+<%--						</label>--%>
+<%--					</fieldset>--%>
+<%--				</div>--%>
 
 			</div>
 
