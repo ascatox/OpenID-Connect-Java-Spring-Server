@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,15 +18,11 @@ public class PolicyModelReader {
 		return doReadModel(model);
 	}
 
-	public static PolicyModel sortFieldsByMandatory(PolicyModel policyModel, boolean mandatory) {
+	public static PolicyModel sortFieldsByFinalityAndMandatory(PolicyModel policyModel) {
 		List<PolicyModel.Attribute> personalDataFiltered = policyModel.getPersonalData().stream()
-			.filter(attribute -> mandatory == attribute.getMandatory()).collect(Collectors.toList());
-		return new PolicyModel(personalDataFiltered);
-	}
-
-	public static PolicyModel sortFieldsByFinality(PolicyModel policyModel, String finality) {
-		List<PolicyModel.Attribute> personalDataFiltered = policyModel.getPersonalData().stream()
-			.filter(attribute -> finality.equalsIgnoreCase(attribute.getFinality())).collect(Collectors.toList());
+			.sorted(Comparator.comparing(PolicyModel.Attribute::getFinality))
+			.sorted(Comparator.comparing(PolicyModel.Attribute::getMandatory))
+			.collect(Collectors.toList());
 		return new PolicyModel(personalDataFiltered);
 	}
 

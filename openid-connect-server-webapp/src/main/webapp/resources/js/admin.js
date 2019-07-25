@@ -89,7 +89,7 @@ var ListWidgetChildView = Backbone.View.extend({
 		e.stopImmediatePropagation();
 		// this.$el.tooltip('delete');
 
-		it.eng.protectid.model.destroy({
+		this.model.destroy({
 			dataType: false,
 			processData: false,
 			error: app.errorHandlerView.handleError()
@@ -101,9 +101,9 @@ var ListWidgetChildView = Backbone.View.extend({
 		e.preventDefault();
 		e.stopImmediatePropagation();
 		if ($(e.target).is(':checked')) {
-			this.options.collection.add(it.eng.protectid.model);
+			this.options.collection.add(this.model);
 		} else {
-			this.options.collection.remove(it.eng.protectid.model);
+			this.options.collection.remove(this.model);
 		}
 
 	},
@@ -130,7 +130,7 @@ var ListWidgetChildView = Backbone.View.extend({
 
 		$('.item-full', this.el).hide();
 
-		if (it.eng.protectid.model.get('item').length > 30) {
+		if (this.model.get('item').length > 30) {
 			this.$el.tooltip({
 				title: $.t('admin.list-widget.tooltip')
 			});
@@ -351,7 +351,7 @@ var UserProfileView = Backbone.View.extend({
 
 		var t = this.template;
 
-		_.each(it.eng.protectid.model, function(value, key) {
+		_.each(this.model, function(value, key) {
 			if (key && value) {
 
 				if (typeof (value) === 'object') {
