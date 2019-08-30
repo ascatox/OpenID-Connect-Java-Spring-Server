@@ -1,7 +1,7 @@
 package it.protectid.service;
 
-import it.eng.quorum.Quorum;
-import it.eng.quorum.QuorumImpl;
+import it.eng.jquorum.Quorum;
+import it.eng.jquorum.QuorumImpl;
 import it.protectid.crypto.AsymmetricCryptography;
 import it.protectid.crypto.GenerateKeys;
 import it.protectid.model.authority.Sid;

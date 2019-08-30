@@ -1,6 +1,6 @@
-package it.eng.quorum;
+package it.eng.jquorum;
 
-import it.eng.quorum.wrapper.contract.Greeter;
+import it.eng.jquorum.wrapper.contract.Greeter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.web3j.protocol.core.RemoteCall;
@@ -63,7 +63,7 @@ public class QuorumImpl implements Quorum {
 					quorum,
 					ethFirstAccount, ethFirstAccount, privateFor);
 			ContractGasProvider contractGasProvider = new StaticGasProvider(GAS_PRICE, GAS_LIMIT);
-			//Greeter.deploy(quorum, transactionManager, contractGasProvider, "Ciao Prof. Conte").send();
+			//Greeter.deploy(jquorum, transactionManager, contractGasProvider, "Ciao Prof. Conte").send();
 			final Greeter greeter = Greeter.load("0xaa0b763cd8899196f9efce1e7b77b63c5671fbd8", quorum, transactionManager, contractGasProvider);
 			final RemoteCall<String> greet = greeter.greet();
 			String message = greet.send();
