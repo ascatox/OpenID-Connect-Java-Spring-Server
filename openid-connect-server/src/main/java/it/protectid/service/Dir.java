@@ -1,15 +1,13 @@
 package it.protectid.service;
 
+import it.eng.quorum.Quorum;
+import it.eng.quorum.QuorumImpl;
 import it.protectid.crypto.AsymmetricCryptography;
 import it.protectid.crypto.GenerateKeys;
-import it.protectid.model.dir.ObjectRequestDir;
 import it.protectid.model.authority.Sid;
+import it.protectid.model.dir.ObjectRequestDir;
 import it.protectid.utils.JsonConverter;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.security.PublicKey;
 
@@ -17,11 +15,12 @@ import java.security.PublicKey;
  * @author clod16
  */
 @Service
-public class DirRestClient {
+public class Dir {
 	//FIXME: insert correct URL for BC
 	private static final String URL_SAWTOOTH_POST = "http://localhost:8080/sawtooth";
 	private static final String URL_SAWTOOTH_GET = "http://localhost:8080/sawtooth/state";
 
+	Quorum quorum;
 	AsymmetricCryptography asymmetricCryptography;
 
 	public enum Function {
@@ -30,22 +29,19 @@ public class DirRestClient {
 
 	public String invoke(String fcn, String payloadJson, boolean isPost) {
 		try {
+			quorum = new QuorumImpl();
 			Sid sid = (Sid) JsonConverter.jsonToObject(payloadJson, Sid.class);
 			if (checkSign(sid)) {
 				sid.setSig(""); // dopo i controlli sulla SIG, viene azzerata per inserirla sul registro pubblico
 				String sidJson = JsonConverter.objectToJson(sid);
 				ObjectRequestDir req = new ObjectRequestDir(fcn, sidJson);
 				String reqDirJSON = JsonConverter.objectToJson(req);
-				HttpHeaders httpHeaders = new HttpHeaders();
-				httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-				HttpEntity<String> requestBody = new HttpEntity<>(reqDirJSON, httpHeaders);
-				RestTemplate restTemplate = new RestTemplate();
 				if (isPost) {
-					return restTemplate.postForObject(URL_SAWTOOTH_POST, requestBody, String.class);
+					return quorum.entryPointQuorum("", "");
 				} else {
 					//SEE @ascatox : nel documento non c'é traccia di alcuna get, mauro non le predisposte.
 					// Dobbiamo pensare noi se in qualche passaggio magari servono, in caso negativo penso che HLS sia ok per le sole post/update!
-					return restTemplate.getForObject(URL_SAWTOOTH_GET, String.class);
+					return quorum.entryPointQuorum("", "");
 				}
 			}
 			return null;

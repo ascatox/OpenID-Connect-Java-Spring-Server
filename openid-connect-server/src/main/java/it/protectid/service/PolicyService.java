@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class PolicyService {
 	@Autowired
-	DirRestClient dirRestClient;
+	Dir dir;
 	@Autowired
 	JpaPpmRepository jpaPpmRepository;
 
