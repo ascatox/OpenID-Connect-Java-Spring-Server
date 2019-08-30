@@ -144,7 +144,7 @@ var BlackListWidgetView = Backbone.View.extend({
 
 	render: function() {
 
-		this.$el.html(this.template(it.eng.protectid.model.toJSON()));
+		this.$el.html(this.template(this.model.toJSON()));
 
 		return this;
 
@@ -160,7 +160,7 @@ var BlackListWidgetView = Backbone.View.extend({
 		if (confirm($.t("blacklist.confirm"))) {
 			var _self = this;
 
-			it.eng.protectid.model.destroy({
+			this.model.destroy({
 				dataType: false,
 				processData: false,
 				success: function() {

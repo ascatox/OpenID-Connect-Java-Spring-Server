@@ -1,8 +1,8 @@
 package it.protectid.service;
 
-import it.protectid.onto.OntoManager;
 import it.protectid.model.policy.PolicyModel;
 import it.protectid.model.policy.Ppm;
+import it.protectid.onto.PolicyModelReader;
 import it.protectid.repository.JpaPpmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,19 +18,16 @@ public class PolicyService {
 	JpaPpmRepository jpaPpmRepository;
 
 	public PolicyModel retrievePpm(String ppmFromRequest) throws Exception {
-		//TODO
-		// Questa parte va interamente rivista sulla base del nuovo modello sulla quale sta lavorando
-		// Massimiliano è la parte iniziale dove la policy ricavata dal modello Ontologico viene estratta e mostrata
 		Ppm ppm = null;
 		if (StringUtils.isEmpty(ppmFromRequest)) {
 			List<Ppm> ppms = jpaPpmRepository.getAll();
 			ppm = ppms.get(0);
 		} else ppm = jpaPpmRepository.getById(ppmFromRequest);
-		return OntoManager.createModelFromOntology(ppm.getModel	());
+		return PolicyModelReader.readModel(ppm.getModel());
 	}
 
 
-	public void acceptPpa(String pid, String sid){
+	public void acceptPpa(String pid, String sid) {
 
 		//TODO
 		// Questa è la parte centrale della gestione della Policy

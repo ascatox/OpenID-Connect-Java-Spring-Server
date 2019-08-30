@@ -212,7 +212,7 @@ var ResRegEditView = Backbone.View.extend({
 		if (confirm($.t('client.client-table.confirm'))) {
 			var self = this;
 
-			it.eng.protectid.model.destroy({
+			this.model.destroy({
 				dataType: false,
 				processData: false,
 				success: function() {
@@ -372,7 +372,7 @@ var ResRegEditView = Backbone.View.extend({
 		}
 
 		var _self = this;
-		it.eng.protectid.model.save(attrs, {
+		this.model.save(attrs, {
 			success: function() {
 				// switch to an "edit" view
 				app.navigate('dev/resource/edit', {
@@ -380,14 +380,14 @@ var ResRegEditView = Backbone.View.extend({
 				});
 				_self.remove();
 
-				if (it.eng.protectid.model.get("jwks")) {
-					it.eng.protectid.model.set({
+				if (_self.model.get("jwks")) {
+					_self.model.set({
 						jwksType: "VAL"
 					}, {
 						silent: true
 					});
 				} else {
-					it.eng.protectid.model.set({
+					_self.model.set({
 						jwksType: "URI"
 					}, {
 						silent: true
@@ -395,7 +395,7 @@ var ResRegEditView = Backbone.View.extend({
 				}
 
 				var view = new ResRegEditView({
-					model: it.eng.protectid.model,
+					model: _self.model,
 					systemScopeList: _self.options.systemScopeList
 				});
 
@@ -413,7 +413,7 @@ var ResRegEditView = Backbone.View.extend({
 
 	render: function() {
 		$(this.el).html(this.template({
-			client: it.eng.protectid.model.toJSON(),
+			client: this.model.toJSON(),
 			userInfo: getUserInfo()
 		}));
 
@@ -422,7 +422,7 @@ var ResRegEditView = Backbone.View.extend({
 		var _self = this;
 
 		// build and bind scopes
-		var scopes = it.eng.protectid.model.get("scope");
+		var scopes = this.model.get("scope");
 		var scopeSet = scopes ? scopes.split(" ") : [];
 		_.each(scopeSet, function(scope) {
 			_self.scopeCollection.add(new Backbone.Model({
@@ -440,7 +440,7 @@ var ResRegEditView = Backbone.View.extend({
 		this.listWidgetViews.push(scopeView);
 
 		// build and bind contacts
-		_.each(it.eng.protectid.model.get('contacts'), function(contact) {
+		_.each(this.model.get('contacts'), function(contact) {
 			_self.contactsCollection.add(new Backbone.Model({
 				item: contact
 			}));

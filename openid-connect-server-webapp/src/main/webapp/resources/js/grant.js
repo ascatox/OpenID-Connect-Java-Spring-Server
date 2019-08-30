@@ -41,7 +41,7 @@ var ApprovedSiteListView = Backbone.View.extend({
 	},
 
 	load: function(callback) {
-		if (it.eng.protectid.model.isFetched && this.options.clientList.isFetched && this.options.systemScopeList.isFetched) {
+		if (this.model.isFetched && this.options.clientList.isFetched && this.options.systemScopeList.isFetched) {
 			callback();
 			return;
 		}
@@ -49,7 +49,7 @@ var ApprovedSiteListView = Backbone.View.extend({
 		$('#loadingbox').sheet('show');
 		$('#loading').html('<span class="label" id="loading-grants">' + $.t('grant.grant-table.approved-sites') + '</span> ' + '<span class="label" id="loading-clients">' + $.t('common.clients') + '</span> ' + '<span class="label" id="loading-scopes">' + $.t('common.scopes') + '</span> ');
 
-		$.when(it.eng.protectid.model.fetchIfNeeded({
+		$.when(this.model.fetchIfNeeded({
 			success: function(e) {
 				$('#loading-grants').addClass('label-success');
 			},
@@ -81,7 +81,7 @@ var ApprovedSiteListView = Backbone.View.extend({
 
 		var _self = this;
 
-		_.each(it.eng.protectid.model.models, function(approvedSite) {
+		_.each(this.model.models, function(approvedSite) {
 			// look up client
 			var client = this.options.clientList.getByClientId(approvedSite.get('clientId'));
 
@@ -107,7 +107,7 @@ var ApprovedSiteListView = Backbone.View.extend({
 
 	togglePlaceholder: function() {
 		// count entries
-		if (it.eng.protectid.model.length > 0) {
+		if (this.model.length > 0) {
 			$('#grant-table', this.el).show();
 			$('#grant-table-empty', this.el).hide();
 		} else {
@@ -123,7 +123,7 @@ var ApprovedSiteListView = Backbone.View.extend({
 		$('#loadingbox').sheet('show');
 		$('#loading').html('<span class="label" id="loading-grants">' + $.t('grant.grant-table.approved-sites') + '</span> ' + '<span class="label" id="loading-clients">' + $.t('common.clients') + '</span> ' + '<span class="label" id="loading-scopes">' + $.t('common.scopes') + '</span> ');
 
-		$.when(it.eng.protectid.model.fetch({
+		$.when(this.model.fetch({
 			success: function(e) {
 				$('#loading-grants').addClass('label-success');
 			},
@@ -166,9 +166,9 @@ var ApprovedSiteView = Backbone.View.extend({
 
 	render: function() {
 
-		var creationDate = it.eng.protectid.model.get("creationDate");
-		var accessDate = it.eng.protectid.model.get("accessDate");
-		var timeoutDate = it.eng.protectid.model.get("timeoutDate");
+		var creationDate = this.model.get("creationDate");
+		var accessDate = this.model.get("accessDate");
+		var timeoutDate = this.model.get("timeoutDate");
 
 		var displayCreationDate = $.t('grant.grant-table.unknown');
 		var hoverCreationDate = "";
@@ -218,7 +218,7 @@ var ApprovedSiteView = Backbone.View.extend({
 		};
 
 		var json = {
-			grant: it.eng.protectid.model.toJSON(),
+			grant: this.model.toJSON(),
 			client: this.options.client.toJSON(),
 			formattedDate: formattedDate
 		};
@@ -226,7 +226,7 @@ var ApprovedSiteView = Backbone.View.extend({
 		this.$el.html(this.template(json));
 
 		$('.scope-list', this.el).html(this.scopeTemplate({
-			scopes: it.eng.protectid.model.get('allowedScopes'),
+			scopes: this.model.get('allowedScopes'),
 			systemScopes: this.options.systemScopeList
 		}));
 
@@ -254,7 +254,7 @@ var ApprovedSiteView = Backbone.View.extend({
 		if (confirm("Are you sure you want to revoke access to this site?")) {
 			var self = this;
 
-			it.eng.protectid.model.destroy({
+			this.model.destroy({
 				dataType: false,
 				processData: false,
 				success: function() {

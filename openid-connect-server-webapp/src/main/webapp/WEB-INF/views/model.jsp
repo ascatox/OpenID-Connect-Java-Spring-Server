@@ -1,7 +1,6 @@
 <%@page import="it.protectid.model.policy.PolicyModel" %>
-<%@ page import="java.util.List" %>
+<%@ page import="it.protectid.onto.PolicyModelReader" %>
 <%@ page import="org.mitre.openid.connect.request.ConnectRequestParameters" %>
-<%@ page import="java.util.Set" %>
 <%@ taglib prefix="authz" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -11,22 +10,44 @@
 
 <%
     PolicyModel policyModel = (PolicyModel) session.getAttribute(ConnectRequestParameters.PPM);
-    List<PolicyModel.Attribute> attributes = policyModel.getAttributes();
-    Set<String> attributeKeys = policyModel.getAttributeKeys();
+    PolicyModel policyModelSorted = PolicyModelReader.sortFieldsByFinalityAndMandatory(policyModel);
 %>
-
-
+<br/>
+<br/>
 <fieldset class="well">
     <legend>
         Policy Model:
     </legend>
     <table class="table">
+        <thead class="thead-dark">
+        <th>
+            Name
+        </th>
+        <th>
+            Finality
+        </th>
+        <th>
+            Mandatory
+        </th>
+        <th>
+            Transfer
+        </th>
+        </thead>
         <%
-            for (String attribute : attributeKeys) {
+            for (PolicyModel.Attribute attribute : policyModelSorted.getPersonalData()) {
         %>
         <tr>
-             <td><i class="icon-apple"></i></i><%=attribute%></td>
+            <td><i class="icon-list-alt"></i> </i><%=attribute.getName()%>
+            </td>
+            <td><%=attribute.getFinality()%>
+            </td>
+            <td><% if (attribute.getMandatory()) {%><i class="icon-thumbs-up"></i><% } else {%><i
+                    class="icon-thumbs-down"></i> <% }%></td>
+            <td><% if (attribute.getTransfer()) {%><i class="icon-thumbs-up"></i><% } else {%><i
+                    class="icon-thumbs-down"></i><% }%></td>
         </tr>
-        <% } %>
+        <%
+            }
+        %>
     </table>
 </fieldset>
