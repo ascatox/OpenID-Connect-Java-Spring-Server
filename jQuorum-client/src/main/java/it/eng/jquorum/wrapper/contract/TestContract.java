@@ -1,4 +1,4 @@
-package it.eng.quorum.wrapper.contract;
+package it.eng.jquorum.wrapper.contract;
 
 import io.reactivex.Flowable;
 

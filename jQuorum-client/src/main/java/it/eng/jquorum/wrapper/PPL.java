@@ -1,4 +1,4 @@
-package it.eng.quorum.wrapper;
+package it.eng.jquorum.wrapper;
 
 import io.reactivex.Flowable;
 import java.math.BigInteger;

@@ -1,4 +1,4 @@
-package it.eng.quorum;
+package it.eng.jquorum;
 
 import org.web3j.quorum.Node;
 
