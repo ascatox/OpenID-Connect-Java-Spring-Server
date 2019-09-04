@@ -26,28 +26,24 @@
         <th>
             Finality
         </th>
-        <th>
-            Mandatory
-        </th>
-        <th>
-            Transfer
-        </th>
         </thead>
         <%
+            String finality = "";
+            String htmlInLine = "";
+
             for (PolicyModel.Attribute attribute : policyModelSorted.getPersonalData()) {
+             htmlInLine = "";
+             if(null != finality && !"".equals(finality) && !finality.equals(attribute.getFinality()))
+                htmlInLine = "<tr><td><input type=\"checkbox\" name=\"accept\" value=\"Accept\" id=\"consensus\" name=\"consensus\"> <label for=\"consensus\">Do il Consenso</label></td><tr/>";
         %>
-        <tr>
-            <td><i class="icon-list-alt"></i> </i><%=attribute.getName()%>
-            </td>
-            <td><%=attribute.getFinality()%>
-            </td>
-            <td><% if (attribute.getMandatory()) {%><i class="icon-thumbs-up"></i><% } else {%><i
-                    class="icon-thumbs-down"></i> <% }%></td>
-            <td><% if (attribute.getTransfer()) {%><i class="icon-thumbs-up"></i><% } else {%><i
-                    class="icon-thumbs-down"></i><% }%></td>
-        </tr>
+         <%=htmlInLine%>
+            <tr>
+                <td><i class="icon-list-alt"></i></i><%=attribute.getName()%></td>
+                <td><%=attribute.getFinality()%></td>
+            </tr>
         <%
-            }
+           finality = attribute.getFinality();
+          }
         %>
     </table>
 </fieldset>
