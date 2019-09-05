@@ -17,8 +17,6 @@ import java.security.PublicKey;
 @Service
 public class Dir {
 	//FIXME: insert correct URL for BC
-	private static final String URL_SAWTOOTH_POST = "http://localhost:8080/sawtooth";
-	private static final String URL_SAWTOOTH_GET = "http://localhost:8080/sawtooth/state";
 
 	Quorum quorum;
 	AsymmetricCryptography asymmetricCryptography;
