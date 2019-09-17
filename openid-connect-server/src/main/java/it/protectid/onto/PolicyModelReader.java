@@ -20,8 +20,8 @@ public class PolicyModelReader {
 
 	public static PolicyModel sortFieldsByFinalityAndMandatory(PolicyModel policyModel) {
 		List<PolicyModel.Attribute> personalDataFiltered = policyModel.getPersonalData().stream()
-			.sorted(Comparator.comparing(PolicyModel.Attribute::getFinality))
 			.sorted(Comparator.comparing(PolicyModel.Attribute::getMandatory))
+			.sorted(Comparator.comparing(PolicyModel.Attribute::getFinality))
 			.collect(Collectors.toList());
 		return new PolicyModel(personalDataFiltered);
 	}

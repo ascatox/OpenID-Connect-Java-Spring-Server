@@ -47,9 +47,7 @@
 								<div>
 								    <p class="alert alert-info">
 								        <i class="icon-globe"></i>
-
 								        <spring:message code="approve.dynamically_registered"/>
-
 								   </p>
 								</div>
 							</c:when>
@@ -59,7 +57,6 @@
 									<h4>
 										<i class="icon-globe"></i> <spring:message code="approve.caution.title"/>:
 									</h4>
-
 									<p>
                                     <spring:message code="approve.dynamically_registered" arguments="${ client.createdAt }"/>
                                     </p>
@@ -243,7 +240,6 @@
 <%--				</div>--%>
 
 			</div>
-
 			<div class="row">
 				<h3>
 						<spring:message code="approve.do_authorize"/> 
@@ -267,7 +263,6 @@
 				<input name="deny" value="${deny_label}" type="submit" onclick="$('#user_oauth_approval').attr('value',false)"
 				class="btn btn-secondary btn-large" />
 			</div>
-
 		</form>
 
 	</div>
